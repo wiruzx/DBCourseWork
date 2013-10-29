@@ -50,4 +50,4 @@ __ДГТУ | ВБПИ31 | 2013г__
 |              |                    |             |                  |                |
 
 
-![schema](schema.png)
+![schema](raw/master/schema.png)
