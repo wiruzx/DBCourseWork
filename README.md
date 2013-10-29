@@ -49,5 +49,6 @@ __ДГТУ | ВБПИ31 | 2013г__
 |              | Этаж               |             |                  |                |
 |              |                    |             |                  |                |
 
+---
 
 ![schema](https://bitbucket.org/wiruzx/db-coursework/raw/c4ca2d467e7fc6baf246b888435f017c9093b74b/schema.png)
