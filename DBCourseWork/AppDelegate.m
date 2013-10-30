@@ -17,6 +17,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    NSLog(@"%@", self.persistentStoreCoordinator);
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.wiruzx.DBCourseWork" in the user's Application Support directory.

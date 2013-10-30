@@ -4,21 +4,21 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Room" inverseName="building" inverseEntity="Room" syncable="YES"/>
     </entity>
-    <entity name="Chair" syncable="YES">
-        <attribute name="headOfChair" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Departament" syncable="YES">
+        <attribute name="headOfDepartament" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="specialization" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="faculty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Faculty" inverseName="chairs" inverseEntity="Faculty" syncable="YES"/>
-        <relationship name="labs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Laboratory" inverseName="chair" inverseEntity="Laboratory" syncable="YES"/>
+        <relationship name="faculty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Faculty" inverseName="departaments" inverseEntity="Faculty" syncable="YES"/>
+        <relationship name="laboratories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Laboratory" inverseName="departament" inverseEntity="Laboratory" syncable="YES"/>
     </entity>
     <entity name="Faculty" syncable="YES">
         <attribute name="dean" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="chairs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Chair" inverseName="faculty" inverseEntity="Chair" syncable="YES"/>
+        <relationship name="departaments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Departament" inverseName="faculty" inverseEntity="Departament" syncable="YES"/>
     </entity>
     <entity name="Laboratory" syncable="YES">
         <attribute name="responsablePerson" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="chair" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Chair" inverseName="labs" inverseEntity="Chair" syncable="YES"/>
+        <relationship name="departament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departament" inverseName="laboratories" inverseEntity="Departament" syncable="YES"/>
         <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="laboratory" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Room" syncable="YES">
@@ -33,10 +33,10 @@
         <relationship name="laboratory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Laboratory" inverseName="room" inverseEntity="Laboratory" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Building" positionX="-837" positionY="-675" width="128" height="73"/>
-        <element name="Chair" positionX="-1379" positionY="-513" width="128" height="118"/>
-        <element name="Faculty" positionX="-1557" positionY="-621" width="128" height="90"/>
+        <element name="Building" positionX="-846" positionY="-729" width="128" height="73"/>
+        <element name="Departament" positionX="-1368" positionY="-558" width="128" height="118"/>
+        <element name="Faculty" positionX="-1539" positionY="-693" width="128" height="88"/>
         <element name="Laboratory" positionX="-1206" positionY="-718" width="128" height="88"/>
-        <element name="Room" positionX="-1028" positionY="-583" width="128" height="178"/>
+        <element name="Room" positionX="-1037" positionY="-574" width="128" height="178"/>
     </elements>
 </model>
