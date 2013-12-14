@@ -19,6 +19,12 @@
 		E6416AE418532E24007D449D /* Faculty.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE318532E24007D449D /* Faculty.m */; };
 		E6416AE718532E24007D449D /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE618532E24007D449D /* Room.m */; };
 		E6416AEA18532E24007D449D /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE918532E24007D449D /* Building.m */; };
+		E6EAF7CD185CEE190028EE1A /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EAF7CC185CEE190028EE1A /* MainWindow.m */; };
+		E6EAF7D0185CF7CA0028EE1A /* BuildingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EAF7CF185CF7CA0028EE1A /* BuildingController.m */; };
+		E6EAF7D4185CF7ED0028EE1A /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EAF7D3185CF7ED0028EE1A /* RoomController.m */; };
+		E6EAF7D7185CF7FD0028EE1A /* FacultyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EAF7D6185CF7FD0028EE1A /* FacultyController.m */; };
+		E6EAF7DA185CF80B0028EE1A /* DepartamentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EAF7D9185CF80B0028EE1A /* DepartamentController.m */; };
+		E6EAF7DD185CF81E0028EE1A /* LaboratoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EAF7DC185CF81E0028EE1A /* LaboratoryController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +52,18 @@
 		E6416AE618532E24007D449D /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
 		E6416AE818532E24007D449D /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
 		E6416AE918532E24007D449D /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
+		E6EAF7CB185CEE190028EE1A /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		E6EAF7CC185CEE190028EE1A /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		E6EAF7CE185CF7CA0028EE1A /* BuildingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingController.h; sourceTree = "<group>"; };
+		E6EAF7CF185CF7CA0028EE1A /* BuildingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingController.m; sourceTree = "<group>"; };
+		E6EAF7D2185CF7ED0028EE1A /* RoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomController.h; sourceTree = "<group>"; };
+		E6EAF7D3185CF7ED0028EE1A /* RoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomController.m; sourceTree = "<group>"; };
+		E6EAF7D5185CF7FD0028EE1A /* FacultyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacultyController.h; sourceTree = "<group>"; };
+		E6EAF7D6185CF7FD0028EE1A /* FacultyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacultyController.m; sourceTree = "<group>"; };
+		E6EAF7D8185CF80B0028EE1A /* DepartamentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartamentController.h; sourceTree = "<group>"; };
+		E6EAF7D9185CF80B0028EE1A /* DepartamentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartamentController.m; sourceTree = "<group>"; };
+		E6EAF7DB185CF81E0028EE1A /* LaboratoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaboratoryController.h; sourceTree = "<group>"; };
+		E6EAF7DC185CF81E0028EE1A /* LaboratoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaboratoryController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +122,9 @@
 				E611EA98181E7E570095E605 /* AppDelegate.m */,
 				E611EA9A181E7E570095E605 /* MainMenu.xib */,
 				E611EA9D181E7E570095E605 /* DBCourseWork.xcdatamodeld */,
+				E6EAF7CB185CEE190028EE1A /* MainWindow.h */,
+				E6EAF7CC185CEE190028EE1A /* MainWindow.m */,
+				E6EAF7D1185CF7D00028EE1A /* Entitiy controllers */,
 				E611EA8C181E7E570095E605 /* Supporting Files */,
 			);
 			path = DBCourseWork;
@@ -136,6 +157,23 @@
 				E6416ADD18532E24007D449D /* Laboratory.m */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		E6EAF7D1185CF7D00028EE1A /* Entitiy controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E6EAF7CE185CF7CA0028EE1A /* BuildingController.h */,
+				E6EAF7CF185CF7CA0028EE1A /* BuildingController.m */,
+				E6EAF7D2185CF7ED0028EE1A /* RoomController.h */,
+				E6EAF7D3185CF7ED0028EE1A /* RoomController.m */,
+				E6EAF7D5185CF7FD0028EE1A /* FacultyController.h */,
+				E6EAF7D6185CF7FD0028EE1A /* FacultyController.m */,
+				E6EAF7D8185CF80B0028EE1A /* DepartamentController.h */,
+				E6EAF7D9185CF80B0028EE1A /* DepartamentController.m */,
+				E6EAF7DB185CF81E0028EE1A /* LaboratoryController.h */,
+				E6EAF7DC185CF81E0028EE1A /* LaboratoryController.m */,
+			);
+			name = "Entitiy controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,8 +240,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6EAF7D4185CF7ED0028EE1A /* RoomController.m in Sources */,
 				E611EA92181E7E570095E605 /* main.m in Sources */,
+				E6EAF7D7185CF7FD0028EE1A /* FacultyController.m in Sources */,
+				E6EAF7D0185CF7CA0028EE1A /* BuildingController.m in Sources */,
+				E6EAF7DD185CF81E0028EE1A /* LaboratoryController.m in Sources */,
 				E6416AE118532E24007D449D /* Departament.m in Sources */,
+				E6EAF7CD185CEE190028EE1A /* MainWindow.m in Sources */,
+				E6EAF7DA185CF80B0028EE1A /* DepartamentController.m in Sources */,
 				E611EA99181E7E570095E605 /* AppDelegate.m in Sources */,
 				E6416AEA18532E24007D449D /* Building.m in Sources */,
 				E6416ADE18532E24007D449D /* Laboratory.m in Sources */,
