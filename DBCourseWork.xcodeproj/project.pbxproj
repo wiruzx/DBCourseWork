@@ -14,6 +14,11 @@
 		E611EA99181E7E570095E605 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E611EA98181E7E570095E605 /* AppDelegate.m */; };
 		E611EA9C181E7E570095E605 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E611EA9A181E7E570095E605 /* MainMenu.xib */; };
 		E611EA9F181E7E570095E605 /* DBCourseWork.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E611EA9D181E7E570095E605 /* DBCourseWork.xcdatamodeld */; };
+		E6416ADE18532E24007D449D /* Laboratory.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416ADD18532E24007D449D /* Laboratory.m */; };
+		E6416AE118532E24007D449D /* Departament.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE018532E24007D449D /* Departament.m */; };
+		E6416AE418532E24007D449D /* Faculty.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE318532E24007D449D /* Faculty.m */; };
+		E6416AE718532E24007D449D /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE618532E24007D449D /* Room.m */; };
+		E6416AEA18532E24007D449D /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE918532E24007D449D /* Building.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,16 @@
 		E611EA98181E7E570095E605 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E611EA9B181E7E570095E605 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E611EA9E181E7E570095E605 /* DBCourseWork.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DBCourseWork.xcdatamodel; sourceTree = "<group>"; };
+		E6416ADC18532E24007D449D /* Laboratory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Laboratory.h; sourceTree = "<group>"; };
+		E6416ADD18532E24007D449D /* Laboratory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Laboratory.m; sourceTree = "<group>"; };
+		E6416ADF18532E24007D449D /* Departament.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Departament.h; sourceTree = "<group>"; };
+		E6416AE018532E24007D449D /* Departament.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Departament.m; sourceTree = "<group>"; };
+		E6416AE218532E24007D449D /* Faculty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Faculty.h; sourceTree = "<group>"; };
+		E6416AE318532E24007D449D /* Faculty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Faculty.m; sourceTree = "<group>"; };
+		E6416AE518532E24007D449D /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		E6416AE618532E24007D449D /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		E6416AE818532E24007D449D /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
+		E6416AE918532E24007D449D /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +99,7 @@
 		E611EA8B181E7E570095E605 /* DBCourseWork */ = {
 			isa = PBXGroup;
 			children = (
+				E6416ADB18532E0D007D449D /* Entities */,
 				E611EA97181E7E570095E605 /* AppDelegate.h */,
 				E611EA98181E7E570095E605 /* AppDelegate.m */,
 				E611EA9A181E7E570095E605 /* MainMenu.xib */,
@@ -103,6 +119,23 @@
 				E611EA94181E7E570095E605 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E6416ADB18532E0D007D449D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				E6416AE818532E24007D449D /* Building.h */,
+				E6416AE918532E24007D449D /* Building.m */,
+				E6416AE518532E24007D449D /* Room.h */,
+				E6416AE618532E24007D449D /* Room.m */,
+				E6416AE218532E24007D449D /* Faculty.h */,
+				E6416AE318532E24007D449D /* Faculty.m */,
+				E6416ADF18532E24007D449D /* Departament.h */,
+				E6416AE018532E24007D449D /* Departament.m */,
+				E6416ADC18532E24007D449D /* Laboratory.h */,
+				E6416ADD18532E24007D449D /* Laboratory.m */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +203,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E611EA92181E7E570095E605 /* main.m in Sources */,
+				E6416AE118532E24007D449D /* Departament.m in Sources */,
 				E611EA99181E7E570095E605 /* AppDelegate.m in Sources */,
+				E6416AEA18532E24007D449D /* Building.m in Sources */,
+				E6416ADE18532E24007D449D /* Laboratory.m in Sources */,
+				E6416AE418532E24007D449D /* Faculty.m in Sources */,
+				E6416AE718532E24007D449D /* Room.m in Sources */,
 				E611EA9F181E7E570095E605 /* DBCourseWork.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +345,7 @@
 				E611EAA4181E7E570095E605 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
