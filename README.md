@@ -42,4 +42,4 @@ _® - связи (relationship)_
 
 ##Схема
 
-![schema](https://bitbucket.org/wiruzx/db-coursework/raw/8a5afb1ea9f6ae562f30b25e51a62ba00994d437/schema.png)
+![schema](https://bitbucket.org/wiruzx/db-coursework/raw/f0ba46586b59f0d5d818283c0191216f1bb0d00f/schema.png)
