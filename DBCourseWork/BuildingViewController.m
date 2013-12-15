@@ -20,7 +20,7 @@
 
 #pragma mark - Private Methods
 
-- (void)createBuilding
+- (void)showCreateBuildingPanel
 {
     BuildingInputPanel *inputPanel = [[BuildingInputPanel alloc] init];
     inputPanel.inputDelegate = self;
@@ -56,8 +56,8 @@
 
 #pragma mark - Actions
 
-- (IBAction)addButtonPressed:(NSButton *)sender {
-    [self createBuilding];
+- (void)addButtonPressed:(NSButton *)sender {
+    [self showCreateBuildingPanel];
 }
 
 #pragma mark - View controller lifecycle
@@ -90,21 +90,18 @@
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    static NSString *const NameIdentifier = @"NameCell";
-    static NSString *const RoomsIdentifier = @"RoomsCell";
-    
     Building *building = self.buildings[row];
     
     if ([tableColumn.identifier isEqualToString:@"Name"]) {
         
-        NSTextField *textField = [tableView makeViewWithIdentifier:NameIdentifier owner:self];
+        NSTextField *textField = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
         
         if (!textField) {
             textField = [[NSTextField alloc] init];
             [textField setEditable:NO];
             [textField setBordered:NO];
             [textField setDrawsBackground:NO];
-            textField.identifier = NameIdentifier;
+            textField.identifier = tableColumn.identifier;
         }
         
         textField.stringValue = building.name;
@@ -112,14 +109,14 @@
         
     } else if ([tableColumn.identifier isEqualToString:@"Rooms"]) {
         
-        NSTextField *textField = [tableView makeViewWithIdentifier:RoomsIdentifier owner:self];
+        NSTextField *textField = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
         
         if (!textField) {
             textField = [[NSTextField alloc] init];
             [textField setEditable:NO];
             [textField setBordered:NO];
             [textField setDrawsBackground:NO];
-            textField.identifier = RoomsIdentifier;
+            textField.identifier = tableColumn.identifier;
         }
         
         textField.integerValue = building.rooms.count;

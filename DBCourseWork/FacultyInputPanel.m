@@ -1,20 +1,22 @@
 //
-//  BuildingInputPanel.m
+//  FacultyInputPanel.m
 //  DBCourseWork
 //
 //  Created by Виктор Шаманов on 12/15/13.
 //  Copyright (c) 2013 Victor Shamanov. All rights reserved.
 //
 
-#import "BuildingInputPanel.h"
+#import "FacultyInputPanel.h"
 
-@interface BuildingInputPanel ()
+@interface FacultyInputPanel ()
 
 @property (weak) IBOutlet NSTextField *nameTextField;
 
+@property (weak) IBOutlet NSTextField *deanTextField;
+
 @end
 
-@implementation BuildingInputPanel
+@implementation FacultyInputPanel
 
 #pragma mark - Initialization
 
@@ -35,19 +37,17 @@
 }
 
 #pragma mark - Actions
-- (IBAction)returnButtonPressedInTextField:(id)sender {
-    [self doneButtonPressed:sender];
-}
 
 - (IBAction)cancelButtonPressed:(id)sender {
-    if ([self.inputDelegate respondsToSelector:@selector(inputCanceledInBuildingInputPanel:)])
-        [self.inputDelegate inputCanceledInBuildingInputPanel:self];
+    if ([self.inputDelegate respondsToSelector:@selector(inputCanceledInFacultyInputPanel:)])
+        [self.inputDelegate inputCanceledInFacultyInputPanel:self];
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
-    if ([self.inputDelegate respondsToSelector:@selector(buildingInputPanel:inputCompleteWithName:)])
-        [self.inputDelegate buildingInputPanel:self
-                         inputCompleteWithName:self.nameTextField.stringValue];
+    if ([self.inputDelegate respondsToSelector:@selector(facultyInputPanel:inputCompleteWithName:dean:)])
+        [self.inputDelegate facultyInputPanel:self
+                        inputCompleteWithName:self.nameTextField.stringValue
+                                         dean:self.deanTextField.stringValue];
 }
 
 @end
