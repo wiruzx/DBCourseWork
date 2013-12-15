@@ -25,12 +25,12 @@
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES">
         <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="langth" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="purpose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="width" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="building" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Building" inverseName="rooms" inverseEntity="Building" syncable="YES"/>
         <relationship name="departament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departament" inverseName="rooms" inverseEntity="Departament" syncable="YES"/>
         <relationship name="faculty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Faculty" inverseName="rooms" inverseEntity="Faculty" syncable="YES"/>

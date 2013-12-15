@@ -30,6 +30,8 @@
 		E6DF3CB4185E2E4B00971E4C /* FacultyInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CB3185E2E4B00971E4C /* FacultyInputPanel.m */; };
 		E6DF3CB6185E2E5C00971E4C /* FacultyInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6DF3CB5185E2E5C00971E4C /* FacultyInputPanel.xib */; };
 		E6DF3CB9185E43D800971E4C /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CB8185E43D800971E4C /* RoomViewController.m */; };
+		E6DF3CBC185E44B700971E4C /* RoomInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CBB185E44B700971E4C /* RoomInputPanel.m */; };
+		E6DF3CBE185E44D000971E4C /* RoomInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6DF3CBD185E44D000971E4C /* RoomInputPanel.xib */; };
 		E6EAF7CD185CEE190028EE1A /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EAF7CC185CEE190028EE1A /* MainWindow.m */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,9 @@
 		E6DF3CB5185E2E5C00971E4C /* FacultyInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacultyInputPanel.xib; sourceTree = "<group>"; };
 		E6DF3CB7185E43D800971E4C /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
 		E6DF3CB8185E43D800971E4C /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
+		E6DF3CBA185E44B700971E4C /* RoomInputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomInputPanel.h; sourceTree = "<group>"; };
+		E6DF3CBB185E44B700971E4C /* RoomInputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomInputPanel.m; sourceTree = "<group>"; };
+		E6DF3CBD185E44D000971E4C /* RoomInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomInputPanel.xib; sourceTree = "<group>"; };
 		E6EAF7CB185CEE190028EE1A /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		E6EAF7CC185CEE190028EE1A /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +190,9 @@
 				E6DF3CB2185E2E4B00971E4C /* FacultyInputPanel.h */,
 				E6DF3CB3185E2E4B00971E4C /* FacultyInputPanel.m */,
 				E6DF3CB5185E2E5C00971E4C /* FacultyInputPanel.xib */,
+				E6DF3CBA185E44B700971E4C /* RoomInputPanel.h */,
+				E6DF3CBB185E44B700971E4C /* RoomInputPanel.m */,
+				E6DF3CBD185E44D000971E4C /* RoomInputPanel.xib */,
 			);
 			name = Inputpanels;
 			sourceTree = "<group>";
@@ -257,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6DF3CBE185E44D000971E4C /* RoomInputPanel.xib in Resources */,
 				E611EA90181E7E570095E605 /* InfoPlist.strings in Resources */,
 				E611EA96181E7E570095E605 /* Credits.rtf in Resources */,
 				E6D56CD8185D10840023CF1C /* MainWindowController.xib in Resources */,
@@ -289,6 +298,7 @@
 				E6416ADE18532E24007D449D /* Laboratory.m in Sources */,
 				E6416AE418532E24007D449D /* Faculty.m in Sources */,
 				E6416AE718532E24007D449D /* Room.m in Sources */,
+				E6DF3CBC185E44B700971E4C /* RoomInputPanel.m in Sources */,
 				E611EA9F181E7E570095E605 /* DBCourseWork.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

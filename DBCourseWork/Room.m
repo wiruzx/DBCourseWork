@@ -15,7 +15,7 @@
 @implementation Room
 
 @dynamic height;
-@dynamic langth;
+@dynamic length;
 @dynamic number;
 @dynamic purpose;
 @dynamic stage;
