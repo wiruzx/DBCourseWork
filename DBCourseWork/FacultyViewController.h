@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EntityViewController.h"
 
-@interface FacultyViewController : NSViewController
+@interface FacultyViewController : EntityViewController
 
 @end

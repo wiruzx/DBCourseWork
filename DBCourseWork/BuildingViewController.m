@@ -10,9 +10,7 @@
 #import "BuildingInputPanel.h"
 #import "Building.h"
 
-@interface BuildingViewController () <NSTableViewDataSource, NSTableViewDelegate, BuildingInputPanelDelegate>
-
-@property (weak) IBOutlet NSTableView *tableView;
+@interface BuildingViewController () <BuildingInputPanelDelegate>
 
 @property (strong, nonatomic) NSArray *buildings;
 
@@ -81,25 +79,6 @@
     [self.tableView addTableColumn:roomsColumn];
     
     [self updateItems];
-}
-
-#pragma mark - Initialization
-
-- (id)init
-{
-    if (self = [self initWithNibName:NSStringFromClass(self.class) bundle:nil]) {
-        
-    }
-    return self;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
 }
 
 #pragma mark - Table view delegate & data source

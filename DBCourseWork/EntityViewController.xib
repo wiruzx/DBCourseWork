@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="BuildingViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="EntityViewController">
             <connections>
-                <outlet property="tableView" destination="dnd-aq-4up" id="q8c-jf-sHj"/>
-                <outlet property="view" destination="z1v-hA-MQn" id="fCb-7b-dVc"/>
+                <outlet property="tableView" destination="dnd-aq-4up" id="nxU-ig-1n9"/>
+                <outlet property="view" destination="z1v-hA-MQn" id="lcW-sV-zbd"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -29,10 +29,6 @@
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="-2" id="Bz7-37-7YW"/>
-                                    <outlet property="delegate" destination="-2" id="Akm-9i-Fof"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -61,7 +57,7 @@ QWRkAQ
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="addButtonPressed:" target="-2" id="Tcp-Og-ZFb"/>
+                        <action selector="addButtonPressed:" target="-2" id="Zjh-tX-VfH"/>
                     </connections>
                 </button>
             </subviews>

@@ -7,10 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EntityViewController.h"
 
-@interface BuildingViewController : NSViewController
-
-@property (weak, nonatomic) NSWindow *parentWindow;
-@property (strong, nonatomic) NSManagedObjectContext *context;
+@interface BuildingViewController : EntityViewController
 
 @end

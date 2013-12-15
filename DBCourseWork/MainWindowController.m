@@ -8,10 +8,13 @@
 
 #import "MainWindowController.h"
 #import "BuildingViewController.h"
+#import "FacultyViewController.h"
 
 @interface MainWindowController ()
 
 @property (strong, nonatomic) BuildingViewController *buildingViewController;
+@property (strong, nonatomic) FacultyViewController *facultyViewController;
+
 @property (weak) IBOutlet NSTabView *tabView;
 
 @end
@@ -41,6 +44,12 @@
     self.buildingViewController.context = self.context;
     buildingTabItem.view = self.buildingViewController.view;
     
+    NSTabViewItem *facultyTabItem = self.tabView.tabViewItems[1];
+    self.facultyViewController = [[FacultyViewController alloc] init];
+    self.facultyViewController.parentWindow = self.window;
+    self.facultyViewController.context = self.context;
+    facultyTabItem.view = self.facultyViewController.view;
+
 }
 
 @end
