@@ -1,13 +1,13 @@
 //
-//  LaboratoryController.h
+//  FacultyViewController.h
 //  DBCourseWork
 //
 //  Created by Виктор Шаманов on 12/15/13.
 //  Copyright (c) 2013 Victor Shamanov. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
-@interface LaboratoryController : NSObject <NSTableViewDataSource>
+@interface FacultyViewController : NSViewController
 
 @end

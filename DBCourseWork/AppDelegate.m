@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "MainWindowController.h"
+
 @implementation AppDelegate
 
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
@@ -16,7 +18,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    self.mainWindowController = [[MainWindowController alloc] initWithWindowNibName:NSStringFromClass([MainWindowController class])];
+    self.mainWindowController.context = [self managedObjectContext];   
+    
+    [self.mainWindowController.window makeKeyAndOrderFront:nil];
     NSLog(@"%@", self.persistentStoreCoordinator);
 }
 
@@ -89,9 +94,10 @@
         return nil;
     }
     _persistentStoreCoordinator = coordinator;
-    
+
     return _persistentStoreCoordinator;
 }
+
 
 // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) 
 - (NSManagedObjectContext *)managedObjectContext

@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindowController;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (strong, nonatomic) MainWindowController *mainWindowController;
 
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
