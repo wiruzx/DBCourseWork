@@ -42,6 +42,9 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <action selector="returnKeyPressedInField:" target="NP0-rt-NGO" id="4io-SL-b7A"/>
+                        </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ADg-Ki-tsp">
                         <rect key="frame" x="77" y="74" width="429" height="22"/>
@@ -51,6 +54,9 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <action selector="returnKeyPressedInField:" target="NP0-rt-NGO" id="Fb4-ZF-o1K"/>
+                        </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WGD-xX-RmA">
                         <rect key="frame" x="393" y="-24" width="96" height="22"/>

@@ -38,6 +38,11 @@
 
 #pragma mark - Actions
 
+- (IBAction)returnKeyPressedInField:(id)sender
+{
+    if (sender == self.deanTextField) [self doneButtonPressed:sender];
+}
+
 - (IBAction)cancelButtonPressed:(id)sender {
     if ([self.inputDelegate respondsToSelector:@selector(inputCanceledInFacultyInputPanel:)])
         [self.inputDelegate inputCanceledInFacultyInputPanel:self];

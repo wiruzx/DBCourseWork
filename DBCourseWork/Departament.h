@@ -10,13 +10,14 @@
 #import <CoreData/CoreData.h>
 
 @class Laboratory;
+@class Faculty;
 
 @interface Departament : NSManagedObject
 
 @property (nonatomic, retain) NSString * headOfDepartament;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * specialization;
-@property (nonatomic, retain) NSManagedObject *faculty;
+@property (nonatomic, retain) Faculty *faculty;
 @property (nonatomic, retain) NSSet *laboratories;
 @property (nonatomic, retain) NSSet *rooms;
 @end
