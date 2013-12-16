@@ -18,6 +18,13 @@
 
 @implementation FacultyViewController
 
+#pragma mark - Public methods
+
+- (void)updateTables
+{
+    [self updateItems];
+}
+
 #pragma mark - Private methods
 
 - (void)showCreateFacultyPanel
@@ -28,6 +35,7 @@
     [self.parentWindow beginSheet:inputPanel
                 completionHandler:^(NSModalResponse returnCode) {
                     [self updateItems];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:TablesNeedToBeUpdatedNotification object:nil];
                 }];
     
     

@@ -18,6 +18,13 @@
 
 @implementation BuildingViewController
 
+#pragma mark - Public methods
+
+- (void)updateTables
+{
+    [self updateItems];
+}
+
 #pragma mark - Private Methods
 
 - (void)showCreateBuildingPanel
@@ -27,6 +34,7 @@
     
     [self.parentWindow beginSheet:inputPanel completionHandler:^(NSModalResponse returnCode) {
         [self updateItems];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TablesNeedToBeUpdatedNotification object:nil];
     }];
 }
 

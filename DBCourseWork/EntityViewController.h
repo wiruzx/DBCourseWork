@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+FOUNDATION_EXPORT NSString *const TablesNeedToBeUpdatedNotification;
+
 @interface EntityViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (weak) IBOutlet NSTableView *tableView;
@@ -16,5 +18,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
 - (IBAction)addButtonPressed:(NSButton *)sender;
+
+- (void)updateTables;
 
 @end
