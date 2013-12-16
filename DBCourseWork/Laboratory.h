@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Departament;
 
 @interface Laboratory : NSManagedObject
 
 @property (nonatomic, retain) NSString * responsablePerson;
-@property (nonatomic, retain) NSManagedObject *departament;
+@property (nonatomic, retain) Departament *departament;
 @property (nonatomic, retain) NSSet *rooms;
 @end
 

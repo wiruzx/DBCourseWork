@@ -59,25 +59,7 @@
     [self showCreateFacultyPanel];
 }
 
-#pragma mark - Faculty input panel delegate
-
-//- (void)facultyInputPanel:(FacultyInputPanel *)inputPanel inputCompleteWithName:(NSString *)name dean:(NSString *)dean
-//{
-//    Faculty *newFaculty = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Faculty class])
-//                                                        inManagedObjectContext:self.context];
-//    
-//    newFaculty.name = name;
-//    newFaculty.dean = dean;
-//    
-//    [self.context save:nil];
-//    
-//    [self.parentWindow endSheet:inputPanel];
-//}
-//
-//- (void)inputCanceledInFacultyInputPanel:(FacultyInputPanel *)inputPanel
-//{
-//    [self.parentWindow endSheet:inputPanel];
-//}
+#pragma mark - Departament input panel delegate
 
 - (void)departamentInputPanel:(DepartamentInputPanel *)inputPanel inputCompleteWithName:(NSString *)name head:(NSString *)head specialization:(NSString *)specialization faculty:(Faculty *)faculty
 {

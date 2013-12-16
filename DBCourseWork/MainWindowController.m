@@ -10,6 +10,7 @@
 #import "BuildingViewController.h"
 #import "FacultyViewController.h"
 #import "DepartamentViewController.h"
+#import "LaboratoryViewController.h"
 #import "RoomViewController.h"
 
 @interface MainWindowController ()
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) BuildingViewController *buildingViewController;
 @property (strong, nonatomic) FacultyViewController *facultyViewController;
 @property (strong, nonatomic) DepartamentViewController *departamentViewController;
+@property (strong, nonatomic) LaboratoryViewController *laboratoryViewController;
 @property (strong, nonatomic) RoomViewController *roomViewController;
 
 @property (weak) IBOutlet NSTabView *tabView;
@@ -59,6 +61,12 @@
     self.departamentViewController.parentWindow = self.window;
     self.departamentViewController.context = self.context;
     departamentTabItem.view = self.departamentViewController.view;
+    
+    NSTabViewItem *laboratoriesTabItem = self.tabView.tabViewItems[3];
+    self.laboratoryViewController = [[LaboratoryViewController alloc] init];
+    self.laboratoryViewController.parentWindow = self.window;
+    self.laboratoryViewController.context = self.context;
+    laboratoriesTabItem.view = self.laboratoryViewController.view;
     
     NSTabViewItem *roomTabItem = self.tabView.tabViewItems[4];
     self.roomViewController = [[RoomViewController alloc] init];
