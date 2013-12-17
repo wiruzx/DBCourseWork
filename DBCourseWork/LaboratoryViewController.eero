@@ -1,0 +1,143 @@
+//
+//  LaboratoryViewController.eero
+//  DBCourseWork
+//
+//  Created by Виктор Шаманов on 12/17/13.
+//  Copyright (c) 2013 Victor Shamanov. All rights reserved.
+//
+ 
+#import "LaboratoryViewController.h"
+#import "LaboratoryInputPanel.h"
+#import "Departament.h"
+#import "Laboratory.h"
+
+interface LaboratoryViewController() <LaboratoryInputPanelDelegate>
+
+Array laboratories
+
+end
+ 
+implementation LaboratoryViewController
+
+#pragma mark - Private methods
+
+updateItems
+    
+    fetchRequest := FetchRequest.alloc.initWithEntityName:StringFromClass(Laboratory.class)
+    self.laboratories = self.context.executeFetchRequest: fetchRequest, error: nil
+    
+    self.tableView.reloadData
+
+showCreateLaboratoryPanel
+    inputPanel := LaboratoryInputPanel.new
+    inputPanel.inputDelegate = self
+
+    request := FetchRequest.alloc.initWithEntityName:StringFromClass(Departament.class)
+
+
+    inputPanel.departaments = self.context.executeFetchRequest:request, error:nil
+
+    self.parentWindow.beginSheet:inputPanel, completionHandler:(ModalResponse returnCode)
+        self.updateItems
+        NotificationCenter.defaultCenter.postNotificationName:TablesNeedToBeUpdatedNotification, object:nil
+
+#pragma mark - Public methods
+
+updateTables
+    self.updateItems
+
+#pragma mark - Actions
+
+editButtonPressed:Button sender
+    Log('%@', sender)
+
+deleteButtonPressed:Button sender
+    if self.tableView.selectedRow > 0
+        self.context.deleteObject: self.laboratories[self.tableView.selectedRow]
+        self.context.save:nil
+        self.updateItems
+
+addButtonPressed:Button sender
+    self.showCreateLaboratoryPanel
+
+#pragma mark - Laboratory input panel delegate
+
+laboratoryInputPanel:LaboratoryInputPanel inputPanel, inputCompleteWithResponsable:String responsablePerson, departament:Departament departament
+    
+    Laboratory laboratory = EntityDescription.insertNewObjectForEntityForName:StringFromClass(Laboratory.class), inManagedObjectContext:self.context
+    laboratory.responsablePerson = responsablePerson
+
+    departament.addLaboratoriesObject:laboratory
+
+    self.context.save:nil
+
+    self.parentWindow.endSheet:inputPanel
+
+inputCanceledInLaboratoryInputPanel:LaboratoryInputPanel inputPanel
+    self.parentWindow.endSheet:inputPanel
+
+#pragma mark - View controller lifecycle
+
+viewDidLoad
+    
+    columnIdentifiers := ['Responsable', 'Departament', 'Rooms']
+
+    for String identifier in columnIdentifiers
+        column := TableColumn.alloc.initWithIdentifier:identifier
+        column.headerCell.setTitle:identifier
+        self.tableView.addTableColumn:column
+    
+    self.updateItems
+
+loadView
+    super.loadView
+    self.viewDidLoad
+
+#pragma mark - Table view data source & delegate
+
+numberOfRowsInTableView:TableView tableView, return Integer =  self.laboratories.count
+
+tableView:TableView tableView, viewForTableColumn:TableColumn tableColumn, row:Integer row, return View = nil
+    Laboratory laboratory = self.laboratories[row]
+
+    if tableColumn.identifier == 'Responsable'
+        TextField textField = tableView.makeViewWithIdentifier:tableColumn.identifier, owner:self
+
+        if not textField
+            textField = TextField.new
+            textField.setEditable:NO
+            textField.setBordered:NO
+            textField.setDrawsBackground:NO
+            textField.identifier = tableColumn.identifier
+
+        textField.stringValue = laboratory.responsablePerson
+        return textField
+
+    else if tableColumn.identifier == 'Departament'
+        TextField textField = tableView.makeViewWithIdentifier:tableColumn.identifier, owner:self
+
+        if not textField
+            textField = TextField.new
+            textField.setEditable:NO
+            textField.setBordered:NO
+            textField.setDrawsBackground:NO
+            textField.identifier = tableColumn.identifier
+
+        textField.stringValue = laboratory.departament.name
+        return textField
+
+    else if tableColumn.identifier == 'Rooms'
+        TextField textField = tableView.makeViewWithIdentifier:tableColumn.identifier, owner:self
+
+        if not textField
+            textField = TextField.new
+            textField.setEditable:NO
+            textField.setBordered:NO
+            textField.setDrawsBackground:NO
+            textField.identifier = tableColumn.identifier
+
+        textField.integerValue = laboratory.rooms.count
+        return textField
+ 
+end
+
