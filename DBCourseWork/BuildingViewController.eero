@@ -10,10 +10,14 @@
 #import "Building.h"
 #import "InputPanel.h"
 #import "BuildingInputView.h"
+#import "RoomViewController.h"
+#import "Room.h"
 
 interface BuildingViewController () <InputPanelDelegate>
 
 Array buildings {nonatomic}
+RoomViewController roomViewController {nonatomic}
+Panel roomPanel {nonatomic}
 
 end
  
@@ -35,6 +39,7 @@ newButton, return Button
 
 updateItems
     fetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Building.class)
+    fetchRequest.predicate = self.predicate
     self.buildings = self.context.executeFetchRequest: fetchRequest, error: nil
     self.tableView.reloadData
 
@@ -74,10 +79,26 @@ showEditBuildingDialogWithMode:InputMode
 updateTablesNotificationReceived
     self.updateItems
 
+#pragma mark - Getters
+
+roomViewController, return RoomViewController = _roomViewController
+    if not _roomViewController
+        _roomViewController = RoomViewController.alloc.initWithType: EntityViewControllerTypeReadOnly, completion: ()
+            self.parentWindow.endSheet: self.roomPanel
+        _roomViewController.context = self.context
+
+roomPanel, return Panel = _roomPanel
+    if not _roomPanel
+        _roomPanel = Panel.alloc.init
+        _roomPanel.setFrame: DEFAULT_PANEL_RECT, display: YES
+        _roomPanel.contentView = self.roomViewController.view
+
 #pragma mark - Actions
 
 roomsButtonPressed: Button sender
-    Log('showing all rooms')
+    Building selectedBuilding = sender.tag < self.buildings.count ? self.buildings[sender.tag] : nil
+    self.roomViewController.predicate = Predicate.predicateWithFormat: 'building = %@', selectedBuilding
+    self.parentWindow.beginSheet: self.roomPanel, completionHandler: nil
 
 addButtonPressed: Button sender
     self.showEditBuildingDialogWithMode: InputModeNew
@@ -128,6 +149,8 @@ cancelButtonPressedInInputPanel: InputPanel
 
 viewDidLoad
     
+    super.viewDidLoad
+    
     heights := {'Name':@300.0,'Rooms':@150.0}
 
     for String columnIdentifier in ['Name', 'Rooms']
@@ -138,10 +161,6 @@ viewDidLoad
         self.tableView.addTableColumn: column
 
     self.updateItems
-
-loadView
-    super.loadView
-    self.viewDidLoad
 
 #pragma mark - TableView delegate & datasource
 
@@ -170,7 +189,8 @@ tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, r
             button.tag = row
             button.target = self
             button.action = |roomsButtonPressed:|
-
+        if self.type == EntityViewControllerTypeReadOnly
+            button.enabled = NO
         button.title = String.stringWithFormat:'All rooms(%ld)', building.rooms.count
         return button
  

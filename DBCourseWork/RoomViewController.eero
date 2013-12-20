@@ -36,6 +36,7 @@ newLabel, return TextField
 
 updateItems
     fetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Room.class)
+    fetchRequest.predicate = self.predicate
     self.rooms = self.context.executeFetchRequest: fetchRequest, error: nil
     self.tableView.reloadData
 
@@ -225,6 +226,8 @@ cancelButtonPressedInInputPanel: InputPanel
 
 viewDidLoad
 
+    super.viewDidLoad
+
     heights := {'Type':@200.0, 'Stage':@60.0, 'Purpose':@200.0, 'Number':@60.0, 'Height':@60.0, 'Width':@60.0, 'Length':@60.0, 'Building':@150.0, 'Faculty':@150.0, 'Departament':@150.0, 'Laboratory':@220.0}
     
     for String columnIdentifier in ['Type', 'Stage', 'Purpose', 'Number', 'Height', 'Width', 'Length', 'Building', 'Faculty', 'Departament', 'Laboratory']
@@ -235,10 +238,6 @@ viewDidLoad
         self.tableView.addTableColumn: column
 
     self.updateItems
-
-loadView
-    super.loadView
-    self.viewDidLoad
 
 #pragma mark - TableView delegate & datasource
 

@@ -11,18 +11,32 @@
 NSString *const TablesNeedToBeUpdatedNotification = @"TablesNeedToBeUpdatedNotification;";
 
 @interface EntityViewController ()
-
+@property (weak) IBOutlet NSButton *closeButton;
+@property (weak) IBOutlet NSButton *deleteButton;
+@property (weak) IBOutlet NSButton *editButton;
+@property (weak) IBOutlet NSButton *addButton;
 
 @end
 
 @implementation EntityViewController
 
+@synthesize type = _type;
+
 #pragma mark - Initialization
 
 - (id)init
 {
-    if (self = [self initWithNibName:@"EntityViewController" bundle:nil]) {
+    if (self = [self initWithType:EntityViewControllerTypeRegular completion:nil]) {
         
+    }
+    return self;
+}
+
+- (instancetype)initWithType:(EntityViewControllerType)type completion:(void (^)())completion
+{
+    if (self = [self initWithNibName:@"EntityViewController" bundle:nil]) {
+        _type = type;
+        self.completionBlock = completion;
     }
     return self;
 }
@@ -35,8 +49,15 @@ NSString *const TablesNeedToBeUpdatedNotification = @"TablesNeedToBeUpdatedNotif
                                                  selector:@selector(updateTablesNotificationReceived)
                                                      name:TablesNeedToBeUpdatedNotification
                                                    object:nil];
+        
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.closeButton.target = self; self.closeButton.action = @selector(closeButtonPressed:);
 }
 
 - (void)updateTablesNotificationReceived
@@ -49,17 +70,41 @@ NSString *const TablesNeedToBeUpdatedNotification = @"TablesNeedToBeUpdatedNotif
     [[NSNotificationCenter defaultCenter] postNotificationName:TablesNeedToBeUpdatedNotification object: nil];
 }
 
-- (IBAction)addButtonPressed:(NSButton *)sender {
-    
+//- (IBAction)addButtonPressed:(NSButton *)sender {
+//    
+//}
+//
+//- (IBAction)deleteButtonPressed:(NSButton *)sender {
+//    
+//}
+//
+//- (IBAction)editButtonPressed:(NSButton *)sender {
+//    
+//}
+
+- (IBAction)closeButtonPressed:(NSButton *)sender {
+    if (self.completionBlock) self.completionBlock();
 }
 
-- (IBAction)deleteButtonPressed:(NSButton *)sender {
-    
+- (void)loadView
+{
+    [super loadView];
+    [self viewDidLoad];
 }
 
-- (IBAction)editButtonPressed:(NSButton *)sender {
-    
+- (void)viewDidLoad
+{
+    switch (self.type) {
+        case EntityViewControllerTypeRegular:
+            
+            break;
+        case EntityViewControllerTypeReadOnly:
+            [self.editButton setHidden:YES];
+            [self.deleteButton setHidden:YES];
+            [self.addButton setHidden:YES];
+            [self.closeButton setHidden:NO];
+            break;
+    }
 }
-
 
 @end

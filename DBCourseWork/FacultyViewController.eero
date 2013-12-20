@@ -10,10 +10,18 @@
 #import "FacultyInputView.h"
 #import "InputPanel.h"
 #import "Faculty.h"
+
+#import "DepartamentViewController.h"
+#import "RoomViewController.h"
  
 interface FacultyViewController () <InputPanelDelegate>
 
 Array faculties {nonatomic}
+DepartamentViewController departamentViewController {nonatomic}
+RoomViewController roomViewController {nonatomic}
+
+Panel roomPanel {nonatomic}
+Panel departamentPanel {nonatomic}
 
 end
  
@@ -35,6 +43,7 @@ newButton, return Button
 
 updateItems
     fetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Faculty.class)
+    fetchRequest.predicate = self.predicate
     self.faculties = self.context.executeFetchRequest: fetchRequest, error: nil
     self.tableView.reloadData
 
@@ -78,10 +87,14 @@ updateTablesNotificationReceived
 #pragma mark - Actions
 
 roomsButtonPressed: Button sender
-    Log('showing all rooms')
+    Faculty selectedFaculty = sender.tag < self.faculties.count ? self.faculties[sender.tag] : nil
+    self.roomViewController.predicate = Predicate.predicateWithFormat: 'faculty = %@', selectedFaculty
+    self.parentWindow.beginSheet: self.roomPanel, completionHandler: nil
 
-departamentsButtonPressed: Button sendser
-    Log('showing all departaments')
+departamentsButtonPressed: Button sender
+    Faculty selectedFaculty = sender.tag < self.faculties.count ? self.faculties[sender.tag] : nil
+    self.departamentViewController.predicate = Predicate.predicateWithFormat: 'faculty = %@', selectedFaculty
+    self.parentWindow.beginSheet: self.departamentPanel, completionHandler: nil
 
 addButtonPressed: Button sender
     self.showEditFacultyDialogWithMode: InputModeNew
@@ -104,6 +117,32 @@ deleteButtonPressed: Button sender
                   informativeTextWithFormat: 'Please select a Faculty'
         alert.runModal
 
+#pragma mark - Getters
+
+departamentPanel, return Panel = _departamentPanel
+    if !_departamentPanel
+        _departamentPanel = Panel.alloc.init
+        _departamentPanel.setFrame: DEFAULT_PANEL_RECT, display: YES
+        _departamentPanel.contentView = self.departamentViewController.view
+
+roomPanel, return Panel = _roomPanel
+    if !_roomPanel
+        _roomPanel = Panel.alloc.init
+        _roomPanel.setFrame: DEFAULT_PANEL_RECT, display: YES
+        _roomPanel.contentView = self.roomViewController.view
+
+
+departamentViewController, return DepartamentViewController = _departamentViewController
+    if !_departamentViewController
+        _departamentViewController = DepartamentViewController.alloc.initWithType: EntityViewControllerTypeReadOnly, completion: ()
+            self.parentWindow.endSheet: self.departamentPanel
+        _departamentViewController.context = self.context
+
+roomViewController, return RoomViewController = _roomViewController
+    if !_roomViewController
+        _roomViewController = RoomViewController.alloc.initWithType: EntityViewControllerTypeReadOnly, completion: ()
+            self.parentWindow.endSheet: self.roomPanel
+        _roomViewController.context = self.context
 
 #pragma mark - Input panel delegate
 
@@ -132,6 +171,8 @@ cancelButtonPressedInInputPanel: InputPanel
 #pragma mark - View controller lifecycle
 
 viewDidLoad
+    
+    super.viewDidLoad
 
     heights := {'Name':@150.0, 'Dean':@200.0, 'Departaments':@150.0, 'Rooms':@150.0}
 
@@ -143,10 +184,6 @@ viewDidLoad
         self.tableView.addTableColumn: column
 
     self.updateItems
-
-loadView
-    super.loadView
-    self.viewDidLoad
 
 #pragma mark - TableView delegate & datasource
 
@@ -185,7 +222,8 @@ tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, r
             button.tag = row
             button.target = self
             button.action = |departamentsButtonPressed:|
-
+        if self.type == EntityViewControllerTypeReadOnly
+            button.enabled = NO
         button.title = String.stringWithFormat:'All departaments(%ld)', faculty.departaments.count
         return button
 
@@ -198,7 +236,8 @@ tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, r
             button.tag = row
             button.target = self
             button.action = |roomsButtonPressed:|
-
+        if self.type == EntityViewControllerTypeReadOnly
+            button.enabled = NO
         button.title = String.stringWithFormat:'All rooms(%ld)', faculty.rooms.count
         return button
  

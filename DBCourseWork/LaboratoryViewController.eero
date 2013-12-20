@@ -11,10 +11,15 @@
 #import "InputPanel.h"
 #import "Laboratory.h"
 #import "Departament.h"
+#import "RoomViewController.h"
 
 interface LaboratoryViewController () <InputPanelDelegate>
 
 Array laboratories {nonatomic}
+
+RoomViewController roomViewController {nonatomic}
+
+Panel roomPanel {nonatomic}
 
 end
 
@@ -36,6 +41,7 @@ newButton, return Button
 
 updateItems
     fetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Laboratory.class)
+    fetchRequest.predicate = self.predicate
     self.laboratories = self.context.executeFetchRequest: fetchRequest, error: nil
     self.tableView.reloadData
 
@@ -90,10 +96,26 @@ showEditLaboratoryDialogWithMode:InputMode
 updateTablesNotificationReceived
     self.updateItems
 
+#pragma mark - Getters
+
+roomViewController, return RoomViewController = _roomViewController
+    if not _roomViewController
+        _roomViewController = RoomViewController.alloc.initWithType: EntityViewControllerTypeReadOnly, completion: ()
+            self.parentWindow.endSheet: self.roomPanel
+        _roomViewController.context = self.context
+
+roomPanel, return Panel = _roomPanel
+    if not _roomPanel
+        _roomPanel = Panel.alloc.init
+        _roomPanel.setFrame: DEFAULT_PANEL_RECT, display: YES
+        _roomPanel.contentView = self.roomViewController.view
+
 #pragma mark - Actions
 
 roomsButtonPressed: Button sender
-    Log('showing all rooms')
+    Laboratory selectedLaboratory = sender.tag < self.laboratories.count ? self.laboratories[sender.tag] : nil
+    self.roomViewController.predicate = Predicate.predicateWithFormat: 'laboratory = %@', selectedLaboratory
+    self.parentWindow.beginSheet: self.roomPanel, completionHandler: nil
 
 addButtonPressed: Button sender
     self.showEditLaboratoryDialogWithMode: InputModeNew
@@ -153,6 +175,8 @@ cancelButtonPressedInInputPanel: InputPanel
 
 viewDidLoad
     
+    super.viewDidLoad
+    
     heights := {'Responsable':@200.0, 'Rooms':@150.0}
     
     for String columnIdentifier in ['Responsable', 'Rooms']
@@ -163,10 +187,6 @@ viewDidLoad
         self.tableView.addTableColumn: column
     
     self.updateItems
-
-loadView
-    super.loadView
-    self.viewDidLoad
 
 #pragma mark - TableView delegate & datasource
 
@@ -195,7 +215,8 @@ tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, r
             button.tag = row
             button.target = self
             button.action = |roomsButtonPressed:|
-        
+        if self.type == EntityViewControllerTypeReadOnly
+            button.enabled = NO
         button.title = String.stringWithFormat:'All rooms(%ld)', laboratory.rooms.count
         return button
 
