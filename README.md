@@ -48,4 +48,4 @@ _® - связи (relationship)_
 
 ##Загрузки
 
-[DBCourseWork.app v0.01](https://bitbucket.org/wiruzx/db-coursework/downloads/DBCourseWork.app)
+[DBCourseWork.app v1.0](https://bitbucket.org/wiruzx/db-coursework/downloads/DBCourseWork.app)
