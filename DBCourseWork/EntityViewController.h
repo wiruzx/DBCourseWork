@@ -18,7 +18,10 @@ FOUNDATION_EXPORT NSString *const TablesNeedToBeUpdatedNotification;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
 - (IBAction)addButtonPressed:(NSButton *)sender;
+- (IBAction)deleteButtonPressed:(NSButton *)sender;
+- (IBAction)editButtonPressed:(NSButton *)sender;
 
-- (void)updateTables;
+- (void)updateTablesNotificationReceived;
+- (void)sendUpdateTablesNotification;
 
 @end

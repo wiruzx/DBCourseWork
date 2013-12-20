@@ -64,14 +64,42 @@ QWRkAQ
                         <action selector="addButtonPressed:" target="-2" id="Zjh-tX-VfH"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m8S-JF-rJ2">
+                    <rect key="frame" x="491" y="401" width="64" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dqf-EN-edq">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="editButtonPressed:" target="-2" id="ffS-wG-xyD"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OJZ-PO-ntM">
+                    <rect key="frame" x="410" y="401" width="81" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aHb-An-vp7">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="deleteButtonPressed:" target="-2" id="OzS-Ui-Qpc"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="h4f-M1-wJ4" firstAttribute="top" secondItem="z1v-hA-MQn" secondAttribute="top" constant="10" id="1cy-U1-AhQ"/>
+                <constraint firstItem="b11-h1-YXu" firstAttribute="top" secondItem="m8S-JF-rJ2" secondAttribute="bottom" constant="10" id="9iz-Qn-CC5"/>
                 <constraint firstAttribute="trailing" secondItem="b11-h1-YXu" secondAttribute="trailing" id="IO5-qK-DcV"/>
                 <constraint firstAttribute="trailing" secondItem="h4f-M1-wJ4" secondAttribute="trailing" constant="11" id="T7F-F9-F35"/>
                 <constraint firstItem="b11-h1-YXu" firstAttribute="top" secondItem="h4f-M1-wJ4" secondAttribute="bottom" constant="10" id="VUR-16-Plo"/>
+                <constraint firstItem="h4f-M1-wJ4" firstAttribute="leading" secondItem="m8S-JF-rJ2" secondAttribute="trailing" constant="12" id="eCr-pw-LSo"/>
+                <constraint firstItem="m8S-JF-rJ2" firstAttribute="top" secondItem="z1v-hA-MQn" secondAttribute="top" constant="10" id="ihU-TB-hwH"/>
                 <constraint firstItem="b11-h1-YXu" firstAttribute="leading" secondItem="z1v-hA-MQn" secondAttribute="leading" id="je0-wk-C2Z"/>
+                <constraint firstItem="OJZ-PO-ntM" firstAttribute="top" secondItem="z1v-hA-MQn" secondAttribute="top" constant="10" id="jpe-5q-3z2"/>
                 <constraint firstAttribute="bottom" secondItem="b11-h1-YXu" secondAttribute="bottom" id="n6q-9u-eX8"/>
+                <constraint firstItem="m8S-JF-rJ2" firstAttribute="leading" secondItem="OJZ-PO-ntM" secondAttribute="trailing" constant="12" id="qF3-eQ-GO6"/>
+                <constraint firstItem="b11-h1-YXu" firstAttribute="top" secondItem="OJZ-PO-ntM" secondAttribute="bottom" constant="10" id="qdj-s9-uHl"/>
                 <constraint firstItem="b11-h1-YXu" firstAttribute="top" secondItem="h4f-M1-wJ4" secondAttribute="bottom" constant="10" id="yKe-3q-bEt"/>
             </constraints>
         </customView>

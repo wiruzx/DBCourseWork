@@ -32,19 +32,32 @@ NSString *const TablesNeedToBeUpdatedNotification = @"TablesNeedToBeUpdatedNotif
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(updateTables)
+                                                 selector:@selector(updateTablesNotificationReceived)
                                                      name:TablesNeedToBeUpdatedNotification
                                                    object:nil];
     }
     return self;
 }
 
-- (void)updateTables
+- (void)updateTablesNotificationReceived
 {
     
 }
 
+- (void)sendUpdateTablesNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:TablesNeedToBeUpdatedNotification object: nil];
+}
+
 - (IBAction)addButtonPressed:(NSButton *)sender {
+    
+}
+
+- (IBAction)deleteButtonPressed:(NSButton *)sender {
+    
+}
+
+- (IBAction)editButtonPressed:(NSButton *)sender {
     
 }
 

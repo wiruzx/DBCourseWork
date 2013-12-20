@@ -14,30 +14,33 @@
 		E611EA99181E7E570095E605 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E611EA98181E7E570095E605 /* AppDelegate.m */; };
 		E611EA9C181E7E570095E605 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E611EA9A181E7E570095E605 /* MainMenu.xib */; };
 		E611EA9F181E7E570095E605 /* DBCourseWork.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E611EA9D181E7E570095E605 /* DBCourseWork.xcdatamodeld */; };
-		E638DFE2185DFE7D0023FDDD /* BuildingInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E638DFE1185DFE7D0023FDDD /* BuildingInputPanel.xib */; };
+		E63384E918631D2A00EECCA8 /* FacultyInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = E63384E818631D2A00EECCA8 /* FacultyInputView.m */; };
+		E63384EB18631D3900EECCA8 /* FacultyInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63384EA18631D3900EECCA8 /* FacultyInputView.xib */; };
+		E63384EF18631EAD00EECCA8 /* FacultyViewController.eero in Sources */ = {isa = PBXBuildFile; fileRef = E63384ED18631EAD00EECCA8 /* FacultyViewController.eero */; };
+		E63384F21863228100EECCA8 /* DepartamentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = E63384F11863228100EECCA8 /* DepartamentInputView.m */; };
+		E63384F41863228F00EECCA8 /* DepartamentInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63384F31863228F00EECCA8 /* DepartamentInputView.xib */; };
+		E63384F81863236F00EECCA8 /* DepartamentViewController.eero in Sources */ = {isa = PBXBuildFile; fileRef = E63384F61863236F00EECCA8 /* DepartamentViewController.eero */; };
 		E6416ADE18532E24007D449D /* Laboratory.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416ADD18532E24007D449D /* Laboratory.m */; };
 		E6416AE118532E24007D449D /* Departament.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE018532E24007D449D /* Departament.m */; };
 		E6416AE418532E24007D449D /* Faculty.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE318532E24007D449D /* Faculty.m */; };
 		E6416AE718532E24007D449D /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE618532E24007D449D /* Room.m */; };
 		E6416AEA18532E24007D449D /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = E6416AE918532E24007D449D /* Building.m */; };
-		E6A60817185E0965009637AD /* FacultyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A60815185E0965009637AD /* FacultyViewController.m */; };
+		E66CB4351861E5C500CF0840 /* InputView.eero in Sources */ = {isa = PBXBuildFile; fileRef = E66CB4331861E5C500CF0840 /* InputView.eero */; };
+		E66CB4411861E85900CF0840 /* BuildingInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E66CB4401861E85900CF0840 /* BuildingInputView.xib */; };
 		E6A6081A185E099F009637AD /* EntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6A60819185E099F009637AD /* EntityViewController.xib */; };
 		E6ADAFA11860327D00A8032F /* LaboratoryViewController.eero in Sources */ = {isa = PBXBuildFile; fileRef = E6ADAF9F1860327D00A8032F /* LaboratoryViewController.eero */; };
-		E6D56CD7185D10840023CF1C /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D56CD5185D10840023CF1C /* MainWindowController.m */; };
+		E6ADAFA918604E8000A8032F /* MainWindowController.eero in Sources */ = {isa = PBXBuildFile; fileRef = E6ADAFA718604E8000A8032F /* MainWindowController.eero */; };
+		E6ADAFAC186067A300A8032F /* InputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ADAFAB186067A300A8032F /* InputPanel.m */; };
+		E6ADAFAE186067C700A8032F /* InputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6ADAFAD186067C700A8032F /* InputPanel.xib */; };
+		E6B1B37F1863336100C659EF /* RoomInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B1B37E1863336100C659EF /* RoomInputView.xib */; };
+		E6B1B3831863359700C659EF /* RoomInputView.eero in Sources */ = {isa = PBXBuildFile; fileRef = E6B1B3811863359700C659EF /* RoomInputView.eero */; };
+		E6B1B3871863375E00C659EF /* RoomViewController.eero in Sources */ = {isa = PBXBuildFile; fileRef = E6B1B3851863375E00C659EF /* RoomViewController.eero */; };
+		E6B1B38A18643D6E00C659EF /* LaboratoryInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B1B38918643D6E00C659EF /* LaboratoryInputView.m */; };
+		E6B1B38C18643D7D00C659EF /* LaboratoryInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B1B38B18643D7D00C659EF /* LaboratoryInputView.xib */; };
 		E6D56CD8185D10840023CF1C /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6D56CD6185D10840023CF1C /* MainWindowController.xib */; };
-		E6D56CDD185DD0B00023CF1C /* BuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D56CDC185DD0B00023CF1C /* BuildingViewController.m */; };
-		E6D56CE6185DFA010023CF1C /* BuildingInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D56CE5185DFA010023CF1C /* BuildingInputPanel.m */; };
 		E6DF3CB1185E246900971E4C /* EntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CB0185E246900971E4C /* EntityViewController.m */; };
-		E6DF3CB4185E2E4B00971E4C /* FacultyInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CB3185E2E4B00971E4C /* FacultyInputPanel.m */; };
-		E6DF3CB6185E2E5C00971E4C /* FacultyInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6DF3CB5185E2E5C00971E4C /* FacultyInputPanel.xib */; };
-		E6DF3CB9185E43D800971E4C /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CB8185E43D800971E4C /* RoomViewController.m */; };
-		E6DF3CBC185E44B700971E4C /* RoomInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CBB185E44B700971E4C /* RoomInputPanel.m */; };
-		E6DF3CBE185E44D000971E4C /* RoomInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6DF3CBD185E44D000971E4C /* RoomInputPanel.xib */; };
-		E6DF3CC1185EDEB400971E4C /* DepartamentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CC0185EDEB400971E4C /* DepartamentViewController.m */; };
-		E6DF3CC7185EDED700971E4C /* DepartamentInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CC6185EDED700971E4C /* DepartamentInputPanel.m */; };
-		E6DF3CCA185EDEED00971E4C /* LaboratoryInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CC9185EDEED00971E4C /* LaboratoryInputPanel.m */; };
-		E6DF3CCC185EDF0500971E4C /* DepartamentInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6DF3CCB185EDF0500971E4C /* DepartamentInputPanel.xib */; };
-		E6DF3CCE185EDF1100971E4C /* LaboratoryInputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6DF3CCD185EDF1100971E4C /* LaboratoryInputPanel.xib */; };
+		E6EA638D186307ED0020B902 /* BuildingInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA638C186307ED0020B902 /* BuildingInputView.m */; };
+		E6EA6391186308A20020B902 /* BuildingViewController.eero in Sources */ = {isa = PBXBuildFile; fileRef = E6EA638F186308A20020B902 /* BuildingViewController.eero */; };
 		E6EAF7CD185CEE190028EE1A /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EAF7CC185CEE190028EE1A /* MainWindow.m */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +59,14 @@
 		E611EA98181E7E570095E605 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E611EA9B181E7E570095E605 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E611EA9E181E7E570095E605 /* DBCourseWork.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DBCourseWork.xcdatamodel; sourceTree = "<group>"; };
-		E638DFE1185DFE7D0023FDDD /* BuildingInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuildingInputPanel.xib; sourceTree = "<group>"; };
+		E63384E718631D2A00EECCA8 /* FacultyInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacultyInputView.h; sourceTree = "<group>"; };
+		E63384E818631D2A00EECCA8 /* FacultyInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacultyInputView.m; sourceTree = "<group>"; };
+		E63384EA18631D3900EECCA8 /* FacultyInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacultyInputView.xib; sourceTree = "<group>"; };
+		E63384ED18631EAD00EECCA8 /* FacultyViewController.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = FacultyViewController.eero; sourceTree = "<group>"; };
+		E63384F01863228100EECCA8 /* DepartamentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartamentInputView.h; sourceTree = "<group>"; };
+		E63384F11863228100EECCA8 /* DepartamentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartamentInputView.m; sourceTree = "<group>"; };
+		E63384F31863228F00EECCA8 /* DepartamentInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartamentInputView.xib; sourceTree = "<group>"; };
+		E63384F61863236F00EECCA8 /* DepartamentViewController.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = DepartamentViewController.eero; sourceTree = "<group>"; };
 		E6416ADC18532E24007D449D /* Laboratory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Laboratory.h; sourceTree = "<group>"; };
 		E6416ADD18532E24007D449D /* Laboratory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Laboratory.m; sourceTree = "<group>"; };
 		E6416ADF18532E24007D449D /* Departament.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Departament.h; sourceTree = "<group>"; };
@@ -67,36 +77,34 @@
 		E6416AE618532E24007D449D /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
 		E6416AE818532E24007D449D /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
 		E6416AE918532E24007D449D /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
+		E66CB4331861E5C500CF0840 /* InputView.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = InputView.eero; sourceTree = "<group>"; };
+		E66CB4361861E5D600CF0840 /* InputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView.h; sourceTree = "<group>"; };
+		E66CB4391861E83100CF0840 /* BuildingInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingInputView.h; sourceTree = "<group>"; };
+		E66CB4401861E85900CF0840 /* BuildingInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuildingInputView.xib; sourceTree = "<group>"; };
 		E6A60814185E0965009637AD /* FacultyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacultyViewController.h; sourceTree = "<group>"; };
-		E6A60815185E0965009637AD /* FacultyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacultyViewController.m; sourceTree = "<group>"; };
 		E6A60819185E099F009637AD /* EntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityViewController.xib; sourceTree = "<group>"; };
 		E6ADAF9F1860327D00A8032F /* LaboratoryViewController.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = LaboratoryViewController.eero; sourceTree = "<group>"; };
+		E6ADAFA718604E8000A8032F /* MainWindowController.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = MainWindowController.eero; sourceTree = "<group>"; };
+		E6ADAFAA186067A300A8032F /* InputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputPanel.h; sourceTree = "<group>"; };
+		E6ADAFAB186067A300A8032F /* InputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputPanel.m; sourceTree = "<group>"; };
+		E6ADAFAD186067C700A8032F /* InputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputPanel.xib; sourceTree = "<group>"; };
+		E6B1B37B1863335200C659EF /* RoomInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomInputView.h; sourceTree = "<group>"; };
+		E6B1B37E1863336100C659EF /* RoomInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomInputView.xib; sourceTree = "<group>"; };
+		E6B1B3811863359700C659EF /* RoomInputView.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = RoomInputView.eero; sourceTree = "<group>"; };
+		E6B1B3851863375E00C659EF /* RoomViewController.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = RoomViewController.eero; sourceTree = "<group>"; };
+		E6B1B38818643D6E00C659EF /* LaboratoryInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaboratoryInputView.h; sourceTree = "<group>"; };
+		E6B1B38918643D6E00C659EF /* LaboratoryInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaboratoryInputView.m; sourceTree = "<group>"; };
+		E6B1B38B18643D7D00C659EF /* LaboratoryInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaboratoryInputView.xib; sourceTree = "<group>"; };
 		E6D56CD4185D10840023CF1C /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
-		E6D56CD5185D10840023CF1C /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		E6D56CD6185D10840023CF1C /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		E6D56CDB185DD0B00023CF1C /* BuildingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingViewController.h; sourceTree = "<group>"; };
-		E6D56CDC185DD0B00023CF1C /* BuildingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingViewController.m; sourceTree = "<group>"; };
-		E6D56CE4185DFA010023CF1C /* BuildingInputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingInputPanel.h; sourceTree = "<group>"; };
-		E6D56CE5185DFA010023CF1C /* BuildingInputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingInputPanel.m; sourceTree = "<group>"; };
 		E6DDB318185F1C0A00BD8BEC /* LaboratoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaboratoryViewController.h; sourceTree = "<group>"; };
 		E6DF3CAF185E246900971E4C /* EntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityViewController.h; sourceTree = "<group>"; };
 		E6DF3CB0185E246900971E4C /* EntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityViewController.m; sourceTree = "<group>"; };
-		E6DF3CB2185E2E4B00971E4C /* FacultyInputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacultyInputPanel.h; sourceTree = "<group>"; };
-		E6DF3CB3185E2E4B00971E4C /* FacultyInputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacultyInputPanel.m; sourceTree = "<group>"; };
-		E6DF3CB5185E2E5C00971E4C /* FacultyInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacultyInputPanel.xib; sourceTree = "<group>"; };
 		E6DF3CB7185E43D800971E4C /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
-		E6DF3CB8185E43D800971E4C /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
-		E6DF3CBA185E44B700971E4C /* RoomInputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomInputPanel.h; sourceTree = "<group>"; };
-		E6DF3CBB185E44B700971E4C /* RoomInputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomInputPanel.m; sourceTree = "<group>"; };
-		E6DF3CBD185E44D000971E4C /* RoomInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomInputPanel.xib; sourceTree = "<group>"; };
 		E6DF3CBF185EDEB400971E4C /* DepartamentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartamentViewController.h; sourceTree = "<group>"; };
-		E6DF3CC0185EDEB400971E4C /* DepartamentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartamentViewController.m; sourceTree = "<group>"; };
-		E6DF3CC5185EDED700971E4C /* DepartamentInputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartamentInputPanel.h; sourceTree = "<group>"; };
-		E6DF3CC6185EDED700971E4C /* DepartamentInputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartamentInputPanel.m; sourceTree = "<group>"; };
-		E6DF3CC8185EDEED00971E4C /* LaboratoryInputPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaboratoryInputPanel.h; sourceTree = "<group>"; };
-		E6DF3CC9185EDEED00971E4C /* LaboratoryInputPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaboratoryInputPanel.m; sourceTree = "<group>"; };
-		E6DF3CCB185EDF0500971E4C /* DepartamentInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartamentInputPanel.xib; sourceTree = "<group>"; };
-		E6DF3CCD185EDF1100971E4C /* LaboratoryInputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaboratoryInputPanel.xib; sourceTree = "<group>"; };
+		E6EA638C186307ED0020B902 /* BuildingInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingInputView.m; sourceTree = "<group>"; };
+		E6EA638F186308A20020B902 /* BuildingViewController.eero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.eero; path = BuildingViewController.eero; sourceTree = "<group>"; };
 		E6EAF7CB185CEE190028EE1A /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		E6EAF7CC185CEE190028EE1A /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,7 +168,7 @@
 				E6EAF7CB185CEE190028EE1A /* MainWindow.h */,
 				E6EAF7CC185CEE190028EE1A /* MainWindow.m */,
 				E6D56CD4185D10840023CF1C /* MainWindowController.h */,
-				E6D56CD5185D10840023CF1C /* MainWindowController.m */,
+				E6ADAFA718604E8000A8032F /* MainWindowController.eero */,
 				E6D56CD6185D10840023CF1C /* MainWindowController.xib */,
 				E6EAF7D1185CF7D00028EE1A /* Entitiy view controllers */,
 				E611EA8C181E7E570095E605 /* Supporting Files */,
@@ -200,21 +208,26 @@
 		E6D56CE1185DF8DA0023CF1C /* Inputpanels */ = {
 			isa = PBXGroup;
 			children = (
-				E6D56CE4185DFA010023CF1C /* BuildingInputPanel.h */,
-				E6D56CE5185DFA010023CF1C /* BuildingInputPanel.m */,
-				E638DFE1185DFE7D0023FDDD /* BuildingInputPanel.xib */,
-				E6DF3CB2185E2E4B00971E4C /* FacultyInputPanel.h */,
-				E6DF3CB3185E2E4B00971E4C /* FacultyInputPanel.m */,
-				E6DF3CB5185E2E5C00971E4C /* FacultyInputPanel.xib */,
-				E6DF3CBA185E44B700971E4C /* RoomInputPanel.h */,
-				E6DF3CBB185E44B700971E4C /* RoomInputPanel.m */,
-				E6DF3CBD185E44D000971E4C /* RoomInputPanel.xib */,
-				E6DF3CC5185EDED700971E4C /* DepartamentInputPanel.h */,
-				E6DF3CC6185EDED700971E4C /* DepartamentInputPanel.m */,
-				E6DF3CCB185EDF0500971E4C /* DepartamentInputPanel.xib */,
-				E6DF3CC8185EDEED00971E4C /* LaboratoryInputPanel.h */,
-				E6DF3CC9185EDEED00971E4C /* LaboratoryInputPanel.m */,
-				E6DF3CCD185EDF1100971E4C /* LaboratoryInputPanel.xib */,
+				E6ADAFAA186067A300A8032F /* InputPanel.h */,
+				E6ADAFAB186067A300A8032F /* InputPanel.m */,
+				E6ADAFAD186067C700A8032F /* InputPanel.xib */,
+				E66CB4361861E5D600CF0840 /* InputView.h */,
+				E66CB4331861E5C500CF0840 /* InputView.eero */,
+				E66CB4391861E83100CF0840 /* BuildingInputView.h */,
+				E6EA638C186307ED0020B902 /* BuildingInputView.m */,
+				E66CB4401861E85900CF0840 /* BuildingInputView.xib */,
+				E63384E718631D2A00EECCA8 /* FacultyInputView.h */,
+				E63384E818631D2A00EECCA8 /* FacultyInputView.m */,
+				E63384EA18631D3900EECCA8 /* FacultyInputView.xib */,
+				E63384F01863228100EECCA8 /* DepartamentInputView.h */,
+				E63384F11863228100EECCA8 /* DepartamentInputView.m */,
+				E63384F31863228F00EECCA8 /* DepartamentInputView.xib */,
+				E6B1B37B1863335200C659EF /* RoomInputView.h */,
+				E6B1B3811863359700C659EF /* RoomInputView.eero */,
+				E6B1B37E1863336100C659EF /* RoomInputView.xib */,
+				E6B1B38818643D6E00C659EF /* LaboratoryInputView.h */,
+				E6B1B38918643D6E00C659EF /* LaboratoryInputView.m */,
+				E6B1B38B18643D7D00C659EF /* LaboratoryInputView.xib */,
 			);
 			name = Inputpanels;
 			sourceTree = "<group>";
@@ -226,13 +239,13 @@
 				E6DF3CB0185E246900971E4C /* EntityViewController.m */,
 				E6A60819185E099F009637AD /* EntityViewController.xib */,
 				E6D56CDB185DD0B00023CF1C /* BuildingViewController.h */,
-				E6D56CDC185DD0B00023CF1C /* BuildingViewController.m */,
+				E6EA638F186308A20020B902 /* BuildingViewController.eero */,
 				E6A60814185E0965009637AD /* FacultyViewController.h */,
-				E6A60815185E0965009637AD /* FacultyViewController.m */,
+				E63384ED18631EAD00EECCA8 /* FacultyViewController.eero */,
 				E6DF3CB7185E43D800971E4C /* RoomViewController.h */,
-				E6DF3CB8185E43D800971E4C /* RoomViewController.m */,
+				E6B1B3851863375E00C659EF /* RoomViewController.eero */,
 				E6DF3CBF185EDEB400971E4C /* DepartamentViewController.h */,
-				E6DF3CC0185EDEB400971E4C /* DepartamentViewController.m */,
+				E63384F61863236F00EECCA8 /* DepartamentViewController.eero */,
 				E6DDB318185F1C0A00BD8BEC /* LaboratoryViewController.h */,
 				E6ADAF9F1860327D00A8032F /* LaboratoryViewController.eero */,
 				E6D56CE1185DF8DA0023CF1C /* Inputpanels */,
@@ -291,16 +304,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6DF3CBE185E44D000971E4C /* RoomInputPanel.xib in Resources */,
-				E6DF3CCC185EDF0500971E4C /* DepartamentInputPanel.xib in Resources */,
+				E66CB4411861E85900CF0840 /* BuildingInputView.xib in Resources */,
+				E6B1B37F1863336100C659EF /* RoomInputView.xib in Resources */,
+				E6B1B38C18643D7D00C659EF /* LaboratoryInputView.xib in Resources */,
+				E63384EB18631D3900EECCA8 /* FacultyInputView.xib in Resources */,
 				E611EA90181E7E570095E605 /* InfoPlist.strings in Resources */,
+				E6ADAFAE186067C700A8032F /* InputPanel.xib in Resources */,
 				E611EA96181E7E570095E605 /* Credits.rtf in Resources */,
 				E6D56CD8185D10840023CF1C /* MainWindowController.xib in Resources */,
-				E6DF3CB6185E2E5C00971E4C /* FacultyInputPanel.xib in Resources */,
-				E6DF3CCE185EDF1100971E4C /* LaboratoryInputPanel.xib in Resources */,
 				E6A6081A185E099F009637AD /* EntityViewController.xib in Resources */,
 				E611EA9C181E7E570095E605 /* MainMenu.xib in Resources */,
-				E638DFE2185DFE7D0023FDDD /* BuildingInputPanel.xib in Resources */,
+				E63384F41863228F00EECCA8 /* DepartamentInputView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,27 +325,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6D56CD7185D10840023CF1C /* MainWindowController.m in Sources */,
 				E6DF3CB1185E246900971E4C /* EntityViewController.m in Sources */,
-				E6D56CE6185DFA010023CF1C /* BuildingInputPanel.m in Sources */,
+				E6ADAFAC186067A300A8032F /* InputPanel.m in Sources */,
+				E63384F81863236F00EECCA8 /* DepartamentViewController.eero in Sources */,
 				E611EA92181E7E570095E605 /* main.m in Sources */,
-				E6DF3CC1185EDEB400971E4C /* DepartamentViewController.m in Sources */,
+				E6B1B3871863375E00C659EF /* RoomViewController.eero in Sources */,
+				E6ADAFA918604E8000A8032F /* MainWindowController.eero in Sources */,
 				E6416AE118532E24007D449D /* Departament.m in Sources */,
-				E6DF3CCA185EDEED00971E4C /* LaboratoryInputPanel.m in Sources */,
-				E6D56CDD185DD0B00023CF1C /* BuildingViewController.m in Sources */,
-				E6DF3CB4185E2E4B00971E4C /* FacultyInputPanel.m in Sources */,
 				E6EAF7CD185CEE190028EE1A /* MainWindow.m in Sources */,
-				E6A60817185E0965009637AD /* FacultyViewController.m in Sources */,
+				E63384F21863228100EECCA8 /* DepartamentInputView.m in Sources */,
 				E611EA99181E7E570095E605 /* AppDelegate.m in Sources */,
 				E6416AEA18532E24007D449D /* Building.m in Sources */,
-				E6DF3CB9185E43D800971E4C /* RoomViewController.m in Sources */,
+				E6EA638D186307ED0020B902 /* BuildingInputView.m in Sources */,
+				E66CB4351861E5C500CF0840 /* InputView.eero in Sources */,
 				E6416ADE18532E24007D449D /* Laboratory.m in Sources */,
+				E6EA6391186308A20020B902 /* BuildingViewController.eero in Sources */,
 				E6416AE418532E24007D449D /* Faculty.m in Sources */,
 				E6416AE718532E24007D449D /* Room.m in Sources */,
-				E6DF3CBC185E44B700971E4C /* RoomInputPanel.m in Sources */,
+				E63384E918631D2A00EECCA8 /* FacultyInputView.m in Sources */,
+				E6B1B38A18643D6E00C659EF /* LaboratoryInputView.m in Sources */,
 				E611EA9F181E7E570095E605 /* DBCourseWork.xcdatamodeld in Sources */,
+				E63384EF18631EAD00EECCA8 /* FacultyViewController.eero in Sources */,
 				E6ADAFA11860327D00A8032F /* LaboratoryViewController.eero in Sources */,
-				E6DF3CC7185EDED700971E4C /* DepartamentInputPanel.m in Sources */,
+				E6B1B3831863359700C659EF /* RoomInputView.eero in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

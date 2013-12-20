@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
+@property (weak) IBOutlet NSTabView *tabView;
+
 @end

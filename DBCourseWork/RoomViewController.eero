@@ -1,0 +1,374 @@
+//
+//  RoomViewController.eero
+//  DBCourseWork
+//
+//  Created by Виктор Шаманов on 12/19/13.
+//  Copyright (c) 2013 Victor Shamanov. All rights reserved.
+//
+ 
+#import "RoomViewController.h"
+#import "RoomInputView.h"
+#import "InputPanel.h"
+
+#import "Room.h"
+#import "Faculty.h"
+#import "Laboratory.h"
+#import "Building.h"
+#import "Departament.h"
+
+ 
+interface RoomViewController () <InputPanelDelegate>
+
+Array rooms {nonatomic}
+
+end
+ 
+implementation RoomViewController
+
+#pragma mark - Private methods
+
+newLabel, return TextField
+    textField := TextField.new
+    textField.setEditable: NO
+    textField.setBordered: NO
+    textField.setDrawsBackground: NO
+    return textField
+
+updateItems
+    fetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Room.class)
+    self.rooms = self.context.executeFetchRequest: fetchRequest, error: nil
+    self.tableView.reloadData
+
+showEditRoomDialogWithMode:InputMode
+    roomInputView := RoomInputView.new
+    
+    facultyFetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Faculty.class)
+    buildingFetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Building.class)
+    departamentFetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Departament.class)
+    laboratoryFetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Laboratory.class)
+    
+    roomInputView.faculties = self.context.executeFetchRequest: facultyFetchRequest, error: nil
+    roomInputView.buildings = self.context.executeFetchRequest: buildingFetchRequest, error: nil
+    roomInputView.departaments = self.context.executeFetchRequest: departamentFetchRequest, error: nil
+    roomInputView.laboratories = self.context.executeFetchRequest: laboratoryFetchRequest, error: nil
+
+    switch mode
+        case InputModeNew
+            inputPanel := InputPanel.alloc.initWithInputView: roomInputView, inputMode: mode, delegate: self
+        
+            self.parentWindow.beginSheet: inputPanel, completionHandler: (ModalResponse returnCode)
+                self.sendUpdateTablesNotification
+        case InputModeEdit
+            
+            selectedRow := self.tableView.selectedRow
+            
+            if selectedRow >= 0
+                
+                Room room = self.rooms[selectedRow]
+                
+                inputPanel := InputPanel.alloc.initWithInputView: roomInputView, inputMode: mode, delegate: self
+                
+                roomInputView.heightTextField.doubleValue = room.height.doubleValue
+                roomInputView.lengthTextField.doubleValue = room.length.doubleValue
+                roomInputView.numberTextField.integerValue = room.number.integerValue
+                roomInputView.purposeTextField.stringValue = '' + room.purpose
+                roomInputView.stageTextField.integerValue = room.stage.integerValue
+                roomInputView.typeTextField.stringValue = '' + room.type
+                roomInputView.widthTextField.doubleValue = room.width.doubleValue
+                
+                roomInputView.facultyComboBox.reloadData
+                roomInputView.departamentComboBox.reloadData
+                roomInputView.buildingComboBox.reloadData
+                roomInputView.laboratoryComboBox.reloadData
+                
+                faculties := roomInputView.faculties
+                buildings := roomInputView.buildings
+                departaments := roomInputView.departaments
+                laboratories := roomInputView.laboratories
+                
+                Integer facultiesIndex = faculties.indexOfObjectPassingTest: BOOL (id obj,  UInteger idx, BOOL* stop)
+                    return obj == room.faculty
+
+                if facultiesIndex != (Integer)NSNotFound
+                    roomInputView.facultyComboBox.selectItemAtIndex: facultiesIndex
+
+                Integer buildingsIndex = buildings.indexOfObjectPassingTest: BOOL (id obj,  UInteger idx, BOOL* stop)
+                    return obj == room.building
+
+                if buildingsIndex != (Integer)NSNotFound
+                    roomInputView.buildingComboBox.selectItemAtIndex: buildingsIndex
+
+                Integer departamentsIndex = departaments.indexOfObjectPassingTest: BOOL (id obj,  UInteger idx, BOOL* stop)
+                    return obj == room.departament
+
+                if departamentsIndex != (Integer)NSNotFound
+                    roomInputView.departamentComboBox.selectItemAtIndex: departamentsIndex
+
+                Integer laboratoriesIndex = laboratories.indexOfObjectPassingTest: BOOL (id obj,  UInteger idx, BOOL* stop)
+                    return obj == room.laboratory
+
+                if laboratoriesIndex != (Integer)NSNotFound
+                    roomInputView.laboratoryComboBox.selectItemAtIndex: laboratoriesIndex
+
+    
+                self.parentWindow.beginSheet: inputPanel, completionHandler: (ModalResponse returnCode)
+                    self.sendUpdateTablesNotification
+        
+            else
+                alert := Alert.alertWithMessageText: 'Nothing to edit',
+                                      defaultButton: 'Ok',
+                                    alternateButton: nil,
+                                        otherButton: nil,
+                          informativeTextWithFormat: 'Please select a Room'
+                alert.runModal
+
+#pragma mark - Public methods
+
+updateTablesNotificationReceived
+    self.updateItems
+
+#pragma mark - Actions
+
+roomsButtonPressed: Button sender
+    Log('showing all rooms')
+
+laboratoriesButtonPressed: Button sendser
+    Log('showing all rooms')
+
+addButtonPressed: Button sender
+    self.showEditRoomDialogWithMode: InputModeNew
+
+editButtonPressed: Button sender
+    self.showEditRoomDialogWithMode: InputModeEdit
+
+deleteButtonPressed: Button sender
+    selectedRow := self.tableView.selectedRow
+
+    if selectedRow >= 0
+        self.context.deleteObject: self.rooms[selectedRow]
+        self.context.save: nil
+        self.sendUpdateTablesNotification
+    else
+        alert := Alert.alertWithMessageText: 'Nothing to delete',
+                              defaultButton: 'Ok',
+                            alternateButton: nil,
+                                otherButton: nil,
+                  informativeTextWithFormat: 'Please select a Room'
+        alert.runModal
+
+
+#pragma mark - Input panel delegate
+
+doneButtonPressedInInputPanel: InputPanel, inputMode: InputMode
+    
+    RoomInputView roomInputView = (RoomInputView)panel.inputView
+
+    indexOfSelectedFaculty := roomInputView.facultyComboBox.indexOfSelectedItem
+    faculties := roomInputView.faculties
+    Faculty faculty = indexOfSelectedFaculty < faculties.count ? faculties[indexOfSelectedFaculty] : nil
+
+    indexOfSelectedBuilding := roomInputView.buildingComboBox.indexOfSelectedItem
+    buildings := roomInputView.buildings
+    Building building = indexOfSelectedBuilding < buildings.count ? buildings[indexOfSelectedBuilding] : nil
+
+    indexOfSelectedDepartament := roomInputView.departamentComboBox.indexOfSelectedItem
+    departaments := roomInputView.departaments
+    Departament departament = indexOfSelectedDepartament < departaments.count ? departaments[indexOfSelectedDepartament] : nil
+
+    indexOfSelectedLaboratory := roomInputView.laboratoryComboBox.indexOfSelectedItem
+    laboratories := roomInputView.laboratories
+    Laboratory laboratory = indexOfSelectedLaboratory < laboratories.count ? laboratories[indexOfSelectedLaboratory] : nil
+
+    Room room = nil
+    switch mode
+        case InputModeNew
+            room = EntityDescription.insertNewObjectForEntityForName: StringFromClass(Room.class), inManagedObjectContext: self.context
+        case InputModeEdit
+            room = self.rooms[self.tableView.selectedRow]
+
+    if faculty
+        faculty.addRoomsObject: room
+    else
+        faculty.removeRoomsObject: room
+
+    if departament
+        departament.addRoomsObject: room
+    else
+        departament.removeRoomsObject: room
+
+    if building
+        building.addRoomsObject: room
+    else
+        building.removeRoomsObject: room
+
+    if laboratory
+        laboratory.addRoomsObject: room
+    else
+        laboratory.removeRoomsObject: room
+    
+    room.height = @(roomInputView.heightTextField.doubleValue)
+    room.length = @(roomInputView.lengthTextField.doubleValue)
+    room.number = @(roomInputView.numberTextField.integerValue)
+    room.purpose = roomInputView.purposeTextField.stringValue
+    room.stage = @(roomInputView.stageTextField.integerValue)
+    room.type = roomInputView.typeTextField.stringValue
+    room.width = @(roomInputView.widthTextField.doubleValue)
+
+    self.context.save: nil
+
+    self.parentWindow.endSheet: panel
+
+cancelButtonPressedInInputPanel: InputPanel
+    self.parentWindow.endSheet: panel
+
+#pragma mark - View controller lifecycle
+
+viewDidLoad
+
+    heights := {'Type':@200.0, 'Stage':@60.0, 'Purpose':@200.0, 'Number':@60.0, 'Height':@60.0, 'Width':@60.0, 'Length':@60.0, 'Building':@150.0, 'Faculty':@150.0, 'Departament':@150.0, 'Laboratory':@220.0}
+    
+    for String columnIdentifier in ['Type', 'Stage', 'Purpose', 'Number', 'Height', 'Width', 'Length', 'Building', 'Faculty', 'Departament', 'Laboratory']
+        column := TableColumn.alloc.initWithIdentifier: columnIdentifier
+        column.headerCell.setTitle: columnIdentifier
+        column.setWidth: heights[columnIdentifier].integerValue
+        column.setResizingMask: NSTableColumnUserResizingMask
+        self.tableView.addTableColumn: column
+
+    self.updateItems
+
+loadView
+    super.loadView
+    self.viewDidLoad
+
+#pragma mark - TableView delegate & datasource
+
+numberOfRowsInTableView: TableView, return Integer = self.rooms.count
+
+tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, return View = nil
+    
+    Room room = self.rooms[row]
+
+    if column.identifier == 'Type'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.stringValue = room.type
+
+        return textField
+    else if column.identifier == 'Stage'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.integerValue = room.stage.integerValue
+
+        return textField
+    else if column.identifier == 'Purpose'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.stringValue = room.purpose
+
+        return textField
+    else if column.identifier == 'Number'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.integerValue = room.number.integerValue
+
+        return textField
+    else if column.identifier == 'Height'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.doubleValue = room.height.doubleValue
+
+        return textField
+    else if column.identifier == 'Width'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.doubleValue = room.width.doubleValue
+
+        return textField
+    else if column.identifier == 'Length'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.doubleValue = room.length.doubleValue
+
+        return textField
+    else if column.identifier == 'Building'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+        
+        if room.building.name
+            textField.stringValue = room.building.name
+        else
+            textField.stringValue = ''
+
+        return textField
+    else if column.identifier == 'Faculty'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+        
+        if room.faculty.name
+            textField.stringValue = room.faculty.name
+        else
+            textField.stringValue = ''
+
+        return textField
+    else if column.identifier == 'Departament'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+        
+        if room.departament.name
+            textField.stringValue = room.departament.name
+        else
+            textField.stringValue = ''
+
+        return textField
+    else if column.identifier == 'Laboratory'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+        
+        if room.laboratory.responsablePerson
+            textField.stringValue = String.stringWithFormat: 'Responsable: %@', room.laboratory.responsablePerson
+        else
+            textField.stringValue = ''
+
+        return textField
+ 
+end

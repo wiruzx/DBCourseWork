@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="GKd-Si-Ow6" customClass="InputPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="130" y="63" width="723" height="334"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="768"/>
+            <view key="contentView" id="cGM-0g-Qr3">
+                <rect key="frame" x="0.0" y="0.0" width="723" height="334"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="7GR-Tz-2L5">
+                        <rect key="frame" x="0.0" y="56" width="723" height="278"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cX6-gM-s18">
+                        <rect key="frame" x="553" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="erU-oy-nE9">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelButtonPressed:" target="GKd-Si-Ow6" id="zjK-d0-gxl"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tlZ-wM-z9t">
+                        <rect key="frame" x="635" y="13" width="74" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e0o-9W-hfg">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="doneButtonPressed:" target="GKd-Si-Ow6" id="HKp-cp-PkI"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7GR-Tz-2L5" firstAttribute="leading" secondItem="cGM-0g-Qr3" secondAttribute="leading" id="AzW-MF-Bom"/>
+                    <constraint firstAttribute="bottom" secondItem="cX6-gM-s18" secondAttribute="bottom" constant="20" id="J3e-n1-2Y7"/>
+                    <constraint firstAttribute="bottom" secondItem="tlZ-wM-z9t" secondAttribute="bottom" constant="20" id="KzE-fg-Bmn"/>
+                    <constraint firstItem="tlZ-wM-z9t" firstAttribute="leading" secondItem="cX6-gM-s18" secondAttribute="trailing" constant="12" id="PVT-8H-0K5"/>
+                    <constraint firstAttribute="trailing" secondItem="tlZ-wM-z9t" secondAttribute="trailing" constant="20" id="dFB-FR-YLf"/>
+                    <constraint firstItem="tlZ-wM-z9t" firstAttribute="top" secondItem="7GR-Tz-2L5" secondAttribute="bottom" constant="15" id="gBc-CW-gQ4"/>
+                    <constraint firstItem="7GR-Tz-2L5" firstAttribute="top" secondItem="cGM-0g-Qr3" secondAttribute="top" id="k7M-Nh-eAy"/>
+                    <constraint firstAttribute="trailing" secondItem="7GR-Tz-2L5" secondAttribute="trailing" id="q4s-gi-Qir"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="inputContainerView" destination="7GR-Tz-2L5" id="HLW-oR-s7X"/>
+            </connections>
+        </window>
+    </objects>
+</document>

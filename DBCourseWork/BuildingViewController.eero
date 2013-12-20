@@ -1,0 +1,178 @@
+//
+//  BuildingViewController.eero
+//  DBCourseWork
+//
+//  Created by Виктор Шаманов on 12/19/13.
+//  Copyright (c) 2013 Victor Shamanov. All rights reserved.
+//
+ 
+#import "BuildingViewController.h"
+#import "Building.h"
+#import "InputPanel.h"
+#import "BuildingInputView.h"
+
+interface BuildingViewController () <InputPanelDelegate>
+
+Array buildings {nonatomic}
+
+end
+ 
+implementation BuildingViewController
+
+#pragma mark - Private methods
+
+newLabel, return TextField
+    textField := TextField.new
+    textField.setEditable: NO
+    textField.setBordered: NO
+    textField.setDrawsBackground: NO
+    return textField
+
+newButton, return Button
+    button := Button.new
+    button.setBezelStyle: ShadowlessSquareBezelStyle
+    return button
+
+updateItems
+    fetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Building.class)
+    self.buildings = self.context.executeFetchRequest: fetchRequest, error: nil
+    self.tableView.reloadData
+
+showEditBuildingDialogWithMode:InputMode
+    buildingInputView := BuildingInputView.new
+
+    switch mode
+        case InputModeNew
+            inputPanel := InputPanel.alloc.initWithInputView: buildingInputView, inputMode: mode, delegate: self
+        
+            self.parentWindow.beginSheet: inputPanel, completionHandler: (ModalResponse returnCode)
+                self.sendUpdateTablesNotification
+        case InputModeEdit
+            
+            selectedRow := self.tableView.selectedRow
+            
+            if selectedRow >= 0
+                
+                Building building = self.buildings[selectedRow]
+                
+                inputPanel := InputPanel.alloc.initWithInputView: buildingInputView, inputMode: mode, delegate: self
+                
+                buildingInputView.nameTextField.stringValue = building.name
+            
+                self.parentWindow.beginSheet: inputPanel, completionHandler: (ModalResponse returnCode)
+                    self.sendUpdateTablesNotification
+            else
+                alert := Alert.alertWithMessageText: 'Nothing to edit',
+                                      defaultButton: 'Ok',
+                                    alternateButton: nil,
+                                        otherButton: nil,
+                          informativeTextWithFormat: 'Please select a Builing'
+                alert.runModal
+
+#pragma mark - Public methods
+
+updateTablesNotificationReceived
+    self.updateItems
+
+#pragma mark - Actions
+
+roomsButtonPressed: Button sender
+    Log('showing all rooms')
+
+addButtonPressed: Button sender
+    self.showEditBuildingDialogWithMode: InputModeNew
+
+editButtonPressed: Button sender
+    self.showEditBuildingDialogWithMode: InputModeEdit
+
+deleteButtonPressed: Button sender
+    selectedRow := self.tableView.selectedRow
+
+    if selectedRow >= 0
+        self.context.deleteObject: self.buildings[selectedRow]
+        self.context.save: nil
+        self.sendUpdateTablesNotification
+    else
+        alert := Alert.alertWithMessageText: 'Nothing to delete',
+                              defaultButton: 'Ok',
+                            alternateButton: nil,
+                                otherButton: nil,
+                  informativeTextWithFormat: 'Please select a Builing'
+        alert.runModal
+
+
+#pragma mark - Input panel delegate
+
+doneButtonPressedInInputPanel: InputPanel, inputMode: InputMode
+    
+    BuildingInputView buildingInputView = (BuildingInputView)panel.inputView
+
+    Building building = nil
+
+    switch mode
+        case InputModeNew
+            building = EntityDescription.insertNewObjectForEntityForName: StringFromClass(Building.class), inManagedObjectContext: self.context
+        case InputModeEdit
+            building = self.buildings[self.tableView.selectedRow]
+
+    building.name = buildingInputView.nameTextField.stringValue
+
+    self.context.save: nil
+
+    self.parentWindow.endSheet: panel
+
+cancelButtonPressedInInputPanel: InputPanel
+    self.parentWindow.endSheet: panel
+
+#pragma mark - View controller lifecycle
+
+viewDidLoad
+    
+    heights := {'Name':@300.0,'Rooms':@150.0}
+
+    for String columnIdentifier in ['Name', 'Rooms']
+        column := TableColumn.alloc.initWithIdentifier: columnIdentifier
+        column.headerCell.setTitle: columnIdentifier
+        column.setWidth: heights[columnIdentifier].integerValue
+        column.setResizingMask: NSTableColumnUserResizingMask
+        self.tableView.addTableColumn: column
+
+    self.updateItems
+
+loadView
+    super.loadView
+    self.viewDidLoad
+
+#pragma mark - TableView delegate & datasource
+
+numberOfRowsInTableView: TableView, return Integer = self.buildings.count
+
+tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, return View = nil
+    
+    Building building = self.buildings[row]
+
+    if column.identifier == 'Name'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.stringValue = building.name
+        return textField
+
+    else if column.identifier == 'Rooms'
+        Button button = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not button
+            button = self.newButton
+            button.identifier = column.identifier
+            button.tag = row
+            button.target = self
+            button.action = |roomsButtonPressed:|
+
+        button.title = String.stringWithFormat:'All rooms(%ld)', building.rooms.count
+        return button
+ 
+end
+

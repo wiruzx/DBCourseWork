@@ -10,4 +10,6 @@
 
 @interface RoomViewController : EntityViewController
 
+@property (strong, nonatomic) NSPredicate *fetchingRoomsPredicate;
+
 @end

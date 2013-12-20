@@ -1,0 +1,257 @@
+//
+//  DepartamentViewController.eero
+//  DBCourseWork
+//
+//  Created by Виктор Шаманов on 12/19/13.
+//  Copyright (c) 2013 Victor Shamanov. All rights reserved.
+//
+ 
+#import "DepartamentViewController.h"
+#import "DepartamentInputView.h"
+#import "InputPanel.h"
+#import "Departament.h"
+#import "Faculty.h"
+ 
+interface DepartamentViewController () <InputPanelDelegate>
+
+Array departaments {nonatomic}
+
+end
+ 
+implementation DepartamentViewController
+
+#pragma mark - Private methods
+
+newLabel, return TextField
+    textField := TextField.new
+    textField.setEditable: NO
+    textField.setBordered: NO
+    textField.setDrawsBackground: NO
+    return textField
+
+newButton, return Button
+    button := Button.new
+    button.setBezelStyle: ShadowlessSquareBezelStyle
+    return button
+
+updateItems
+    fetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Departament.class)
+    self.departaments = self.context.executeFetchRequest: fetchRequest, error: nil
+    self.tableView.reloadData
+
+showEditDepartamentDialogWithMode:InputMode
+    departamentInputView := DepartamentInputView.new
+    
+    facultyFetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Faculty.class)
+    
+    departamentInputView.faculties = self.context.executeFetchRequest: facultyFetchRequest, error: nil
+
+    switch mode
+        case InputModeNew
+            inputPanel := InputPanel.alloc.initWithInputView: departamentInputView, inputMode: mode, delegate: self
+        
+            self.parentWindow.beginSheet: inputPanel, completionHandler: (ModalResponse returnCode)
+                self.sendUpdateTablesNotification
+        case InputModeEdit
+            
+            selectedRow := self.tableView.selectedRow
+            
+            if selectedRow >= 0
+                
+                Departament departament = self.departaments[selectedRow]
+                
+                inputPanel := InputPanel.alloc.initWithInputView: departamentInputView, inputMode: mode, delegate: self
+                
+                departamentInputView.nameTextField.stringValue = departament.name
+                departamentInputView.headTextField.stringValue = departament.headOfDepartament
+                departamentInputView.specializationTextField.stringValue = departament.specialization
+                
+                departamentInputView.facultyComboBox.reloadData
+                
+                faculties := departamentInputView.faculties
+                
+                Integer index = faculties.indexOfObjectPassingTest: BOOL (id obj,  UInteger idx, BOOL* stop)
+                    return obj == departament.faculty
+                
+                if index != (Integer)NSNotFound
+                    departamentInputView.facultyComboBox.selectItemAtIndex: index
+    
+                self.parentWindow.beginSheet: inputPanel, completionHandler: (ModalResponse returnCode)
+                    self.sendUpdateTablesNotification
+        
+            else
+                alert := Alert.alertWithMessageText: 'Nothing to edit',
+                                      defaultButton: 'Ok',
+                                    alternateButton: nil,
+                                        otherButton: nil,
+                          informativeTextWithFormat: 'Please select a Departament'
+                alert.runModal
+
+#pragma mark - Public methods
+
+updateTablesNotificationReceived
+    self.updateItems
+
+#pragma mark - Actions
+
+roomsButtonPressed: Button sender
+    Log('showing all rooms')
+
+laboratoriesButtonPressed: Button sendser
+    Log('showing all departaments')
+
+addButtonPressed: Button sender
+    self.showEditDepartamentDialogWithMode: InputModeNew
+
+editButtonPressed: Button sender
+    self.showEditDepartamentDialogWithMode: InputModeEdit
+
+deleteButtonPressed: Button sender
+    selectedRow := self.tableView.selectedRow
+
+    if selectedRow >= 0
+        self.context.deleteObject: self.departaments[selectedRow]
+        self.context.save: nil
+        self.sendUpdateTablesNotification
+    else
+        alert := Alert.alertWithMessageText: 'Nothing to delete',
+                              defaultButton: 'Ok',
+                            alternateButton: nil,
+                                otherButton: nil,
+                  informativeTextWithFormat: 'Please select a Departament'
+        alert.runModal
+
+
+#pragma mark - Input panel delegate
+
+doneButtonPressedInInputPanel: InputPanel, inputMode: InputMode
+    
+    DepartamentInputView departamentInputView = (DepartamentInputView)panel.inputView
+
+
+    indexOfSelectedFaculty := departamentInputView.facultyComboBox.indexOfSelectedItem
+    faculties := departamentInputView.faculties
+    Faculty faculty = indexOfSelectedFaculty < faculties.count ? faculties[indexOfSelectedFaculty] : nil
+
+    Departament departament = nil
+    switch mode
+        case InputModeNew
+            departament = EntityDescription.insertNewObjectForEntityForName: StringFromClass(Departament.class), inManagedObjectContext: self.context
+        case InputModeEdit
+            departament = self.departaments[self.tableView.selectedRow]
+
+    if faculty
+        faculty.addDepartamentsObject: departament
+    else
+        faculty.removeDepartamentsObject: departament
+    
+    departament.name = departamentInputView.nameTextField.stringValue
+    departament.headOfDepartament = departamentInputView.headTextField.stringValue
+    departament.specialization = departamentInputView.specializationTextField.stringValue
+
+    self.context.save: nil
+
+    self.parentWindow.endSheet: panel
+
+cancelButtonPressedInInputPanel: InputPanel
+    self.parentWindow.endSheet: panel
+
+#pragma mark - View controller lifecycle
+
+viewDidLoad
+
+    heights := {'Name':@200.0, 'Head':@200.0, 'Specialization':@200.0, 'Faculty':@150.0, 'Laboratories':@150.0, 'Rooms':@150.0}
+
+    for String columnIdentifier in ['Name', 'Head', 'Specialization', 'Faculty', 'Laboratories', 'Rooms']
+        column := TableColumn.alloc.initWithIdentifier: columnIdentifier
+        column.headerCell.setTitle: columnIdentifier
+        column.setWidth: heights[columnIdentifier].integerValue
+        column.setResizingMask: NSTableColumnUserResizingMask
+        self.tableView.addTableColumn: column
+
+    self.updateItems
+
+loadView
+    super.loadView
+    self.viewDidLoad
+
+#pragma mark - TableView delegate & datasource
+
+numberOfRowsInTableView: TableView, return Integer = self.departaments.count
+
+tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, return View = nil
+    
+    Departament departament = self.departaments[row]
+
+    if column.identifier == 'Name'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.stringValue = departament.name
+        return textField
+
+    else if column.identifier == 'Head'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+        
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+        
+        textField.stringValue = departament.headOfDepartament
+        return textField
+
+    else if column.identifier == 'Specialization'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+        
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+        
+        textField.stringValue = departament.specialization
+        return textField
+
+    else if column.identifier == 'Faculty'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+        
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        if departament.faculty.name
+            textField.stringValue = departament.faculty.name
+        else
+            textField.stringValue = ''
+        return textField
+        
+    else if column.identifier == 'Laboratories'
+        Button button = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not button
+            button = self.newButton
+            button.identifier = column.identifier
+            button.tag = row
+            button.target = self
+            button.action = |laboratoriesButtonPressed:|
+
+        button.title = String.stringWithFormat:'All laboratories(%ld)', departament.laboratories.count
+        return button
+
+    else if column.identifier == 'Rooms'
+        Button button = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not button
+            button = self.newButton
+            button.identifier = column.identifier
+            button.tag = row
+            button.target = self
+            button.action = |roomsButtonPressed:|
+
+        button.title = String.stringWithFormat:'All rooms(%ld)', departament.rooms.count
+        return button
+ 
+end
+
+

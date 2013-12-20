@@ -1,0 +1,205 @@
+//
+//  FacultyViewController.eero
+//  DBCourseWork
+//
+//  Created by Виктор Шаманов on 12/19/13.
+//  Copyright (c) 2013 Victor Shamanov. All rights reserved.
+//
+ 
+#import "FacultyViewController.h"
+#import "FacultyInputView.h"
+#import "InputPanel.h"
+#import "Faculty.h"
+ 
+interface FacultyViewController () <InputPanelDelegate>
+
+Array faculties {nonatomic}
+
+end
+ 
+implementation FacultyViewController
+
+#pragma mark - Private methods
+
+newLabel, return TextField
+    textField := TextField.new
+    textField.setEditable: NO
+    textField.setBordered: NO
+    textField.setDrawsBackground: NO
+    return textField
+
+newButton, return Button
+    button := Button.new
+    button.setBezelStyle: ShadowlessSquareBezelStyle
+    return button
+
+updateItems
+    fetchRequest := FetchRequest.alloc.initWithEntityName: StringFromClass(Faculty.class)
+    self.faculties = self.context.executeFetchRequest: fetchRequest, error: nil
+    self.tableView.reloadData
+
+showEditFacultyDialogWithMode:InputMode
+    facultyInputView := FacultyInputView.new
+
+    switch mode
+        case InputModeNew
+            inputPanel := InputPanel.alloc.initWithInputView: facultyInputView, inputMode: mode, delegate: self
+        
+            self.parentWindow.beginSheet: inputPanel, completionHandler: (ModalResponse returnCode)
+                self.sendUpdateTablesNotification
+        case InputModeEdit
+            
+            selectedRow := self.tableView.selectedRow
+            
+            if selectedRow >= 0
+                
+                Faculty faculty = self.faculties[selectedRow]
+                
+                inputPanel := InputPanel.alloc.initWithInputView: facultyInputView, inputMode: mode, delegate: self
+                
+                facultyInputView.nameTextField.stringValue = faculty.name
+                facultyInputView.deanTextField.stringValue = faculty.dean
+            
+                self.parentWindow.beginSheet: inputPanel, completionHandler: (ModalResponse returnCode)
+                    self.sendUpdateTablesNotification
+            else
+                alert := Alert.alertWithMessageText: 'Nothing to edit',
+                                      defaultButton: 'Ok',
+                                    alternateButton: nil,
+                                        otherButton: nil,
+                          informativeTextWithFormat: 'Please select a Faculty'
+                alert.runModal
+
+#pragma mark - Public methods
+
+updateTablesNotificationReceived
+    self.updateItems
+
+#pragma mark - Actions
+
+roomsButtonPressed: Button sender
+    Log('showing all rooms')
+
+departamentsButtonPressed: Button sendser
+    Log('showing all departaments')
+
+addButtonPressed: Button sender
+    self.showEditFacultyDialogWithMode: InputModeNew
+
+editButtonPressed: Button sender
+    self.showEditFacultyDialogWithMode: InputModeEdit
+
+deleteButtonPressed: Button sender
+    selectedRow := self.tableView.selectedRow
+
+    if selectedRow >= 0
+        self.context.deleteObject: self.faculties[selectedRow]
+        self.context.save: nil
+        self.sendUpdateTablesNotification
+    else
+        alert := Alert.alertWithMessageText: 'Nothing to delete',
+                              defaultButton: 'Ok',
+                            alternateButton: nil,
+                                otherButton: nil,
+                  informativeTextWithFormat: 'Please select a Faculty'
+        alert.runModal
+
+
+#pragma mark - Input panel delegate
+
+doneButtonPressedInInputPanel: InputPanel, inputMode: InputMode
+    
+    FacultyInputView facultyInputView = (FacultyInputView)panel.inputView
+
+    Faculty faculty = nil
+
+    switch mode
+        case InputModeNew
+            faculty = EntityDescription.insertNewObjectForEntityForName: StringFromClass(Faculty.class), inManagedObjectContext: self.context
+        case InputModeEdit
+            faculty = self.faculties[self.tableView.selectedRow]
+
+    faculty.name = facultyInputView.nameTextField.stringValue
+    faculty.dean = facultyInputView.deanTextField.stringValue
+
+    self.context.save: nil
+
+    self.parentWindow.endSheet: panel
+
+cancelButtonPressedInInputPanel: InputPanel
+    self.parentWindow.endSheet: panel
+
+#pragma mark - View controller lifecycle
+
+viewDidLoad
+
+    heights := {'Name':@150.0, 'Dean':@200.0, 'Departaments':@150.0, 'Rooms':@150.0}
+
+    for String columnIdentifier in ['Name', 'Dean', 'Departaments', 'Rooms']
+        column := TableColumn.alloc.initWithIdentifier: columnIdentifier
+        column.headerCell.setTitle: columnIdentifier
+        column.setWidth: heights[columnIdentifier].integerValue
+        column.setResizingMask: NSTableColumnUserResizingMask
+        self.tableView.addTableColumn: column
+
+    self.updateItems
+
+loadView
+    super.loadView
+    self.viewDidLoad
+
+#pragma mark - TableView delegate & datasource
+
+numberOfRowsInTableView: TableView, return Integer = self.faculties.count
+
+tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, return View = nil
+    
+    Faculty faculty = self.faculties[row]
+
+    if column.identifier == 'Name'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.stringValue = faculty.name
+        return textField
+
+    else if column.identifier == 'Dean'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+
+        textField.stringValue = faculty.dean
+        return textField
+
+    else if column.identifier == 'Departaments'
+        Button button = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not button
+            button = self.newButton
+            button.identifier = column.identifier
+            button.tag = row
+            button.target = self
+            button.action = |departamentsButtonPressed:|
+
+        button.title = String.stringWithFormat:'All departaments(%ld)', faculty.departaments.count
+        return button
+
+    else if column.identifier == 'Rooms'
+        Button button = tableView.makeViewWithIdentifier: column.identifier, owner: self
+
+        if not button
+            button = self.newButton
+            button.identifier = column.identifier
+            button.tag = row
+            button.target = self
+            button.action = |roomsButtonPressed:|
+
+        button.title = String.stringWithFormat:'All rooms(%ld)', faculty.rooms.count
+        return button
+ 
+end

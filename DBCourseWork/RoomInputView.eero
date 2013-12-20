@@ -1,0 +1,47 @@
+//
+//  RoomInputView.eero
+//  DBCourseWork
+//
+//  Created by Виктор Шаманов on 12/19/13.
+//  Copyright (c) 2013 Victor Shamanov. All rights reserved.
+//
+ 
+#import "RoomInputView.h"
+#import "Laboratory.h"
+#import "Faculty.h"
+#import "Departament.h"
+#import "Building.h"
+
+interface RoomInputView () <ComboBoxDataSource>
+
+end
+ 
+implementation RoomInputView
+
+#pragma mark - Combo box data source
+numberOfItemsInComboBox: ComboBox comboBox, return Integer = 0
+    if comboBox == self.buildingComboBox
+        return self.buildings.count
+    else if comboBox == self.facultyComboBox
+        return self.faculties.count
+    else if comboBox == self.departamentComboBox
+        return self.departaments.count
+    else if comboBox == self.laboratoryComboBox
+        return self.laboratories.count
+
+
+comboBox: ComboBox comboBox, objectValueForItemAtIndex: Integer, return id = nil
+    if index < 0
+        return nil
+    
+    if comboBox == self.buildingComboBox
+        return self.buildings[index].name
+    else if comboBox == self.facultyComboBox
+        return self.faculties[index].name
+    else if comboBox == self.departamentComboBox
+        return self.departaments[index].name
+    else if comboBox == self.laboratoryComboBox
+        return self.laboratories[index].responsablePerson
+
+end
+
