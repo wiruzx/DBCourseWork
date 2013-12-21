@@ -28,6 +28,8 @@ end
  
 implementation DepartamentViewController
 
+synthesize predicate = _predicate
+
 #pragma mark - Private methods
 
 newLabel, return TextField
@@ -99,6 +101,12 @@ showEditDepartamentDialogWithMode:InputMode
 #pragma mark - Public methods
 
 updateTablesNotificationReceived
+    self.updateItems
+
+#pragma mark - Setters
+
+setPredicate: Predicate
+    _predicate = predicate
     self.updateItems
 
 #pragma mark - Getters

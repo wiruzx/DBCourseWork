@@ -23,6 +23,8 @@ end
  
 implementation BuildingViewController
 
+synthesize predicate = _predicate
+
 #pragma mark - Private methods
 
 newLabel, return TextField
@@ -77,6 +79,12 @@ showEditBuildingDialogWithMode:InputMode
 #pragma mark - Public methods
 
 updateTablesNotificationReceived
+    self.updateItems
+
+#pragma mark - Getters
+
+setPredicate: Predicate
+    _predicate = predicate
     self.updateItems
 
 #pragma mark - Getters
