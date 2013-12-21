@@ -87,10 +87,10 @@ showEditLaboratoryDialogWithMode:InputMode
             
             else
                 alert := Alert.alertWithMessageText: 'Nothing to edit',
-                    defaultButton: 'Ok',
-                        alternateButton: nil,
-                            otherButton: nil,
-                                informativeTextWithFormat: 'Please select a Laboratory'
+                                      defaultButton: 'Ok',
+                                    alternateButton: nil,
+                                        otherButton: nil,
+                          informativeTextWithFormat: 'Please select a Laboratory'
                 alert.runModal
 
 #pragma mark - Public methods
