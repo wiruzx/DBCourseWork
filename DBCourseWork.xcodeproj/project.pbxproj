@@ -37,6 +37,7 @@
 		E6B1B3871863375E00C659EF /* RoomViewController.eero in Sources */ = {isa = PBXBuildFile; fileRef = E6B1B3851863375E00C659EF /* RoomViewController.eero */; };
 		E6B1B38A18643D6E00C659EF /* LaboratoryInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B1B38918643D6E00C659EF /* LaboratoryInputView.m */; };
 		E6B1B38C18643D7D00C659EF /* LaboratoryInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B1B38B18643D7D00C659EF /* LaboratoryInputView.xib */; };
+		E6B1B39218658C1100C659EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B1B39118658C1100C659EF /* Images.xcassets */; };
 		E6D56CD8185D10840023CF1C /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6D56CD6185D10840023CF1C /* MainWindowController.xib */; };
 		E6DF3CB1185E246900971E4C /* EntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DF3CB0185E246900971E4C /* EntityViewController.m */; };
 		E6EA638D186307ED0020B902 /* BuildingInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA638C186307ED0020B902 /* BuildingInputView.m */; };
@@ -95,6 +96,7 @@
 		E6B1B38818643D6E00C659EF /* LaboratoryInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaboratoryInputView.h; sourceTree = "<group>"; };
 		E6B1B38918643D6E00C659EF /* LaboratoryInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaboratoryInputView.m; sourceTree = "<group>"; };
 		E6B1B38B18643D7D00C659EF /* LaboratoryInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaboratoryInputView.xib; sourceTree = "<group>"; };
+		E6B1B39118658C1100C659EF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E6D56CD4185D10840023CF1C /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		E6D56CD6185D10840023CF1C /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		E6D56CDB185DD0B00023CF1C /* BuildingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingViewController.h; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				E6ADAFA718604E8000A8032F /* MainWindowController.eero */,
 				E6D56CD6185D10840023CF1C /* MainWindowController.xib */,
 				E6EAF7D1185CF7D00028EE1A /* Entitiy view controllers */,
+				E6B1B39118658C1100C659EF /* Images.xcassets */,
 				E611EA8C181E7E570095E605 /* Supporting Files */,
 			);
 			path = DBCourseWork;
@@ -313,6 +316,7 @@
 				E611EA96181E7E570095E605 /* Credits.rtf in Resources */,
 				E6D56CD8185D10840023CF1C /* MainWindowController.xib in Resources */,
 				E6A6081A185E099F009637AD /* EntityViewController.xib in Resources */,
+				E6B1B39218658C1100C659EF /* Images.xcassets in Resources */,
 				E611EA9C181E7E570095E605 /* MainMenu.xib in Resources */,
 				E63384F41863228F00EECCA8 /* DepartamentInputView.xib in Resources */,
 			);
@@ -443,10 +447,12 @@
 		E611EAA3181E7E570095E605 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCourseWork/DBCourseWork-Prefix.pch";
 				INFOPLIST_FILE = "DBCourseWork/DBCourseWork-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -455,10 +461,12 @@
 		E611EAA4181E7E570095E605 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBCourseWork/DBCourseWork-Prefix.pch";
 				INFOPLIST_FILE = "DBCourseWork/DBCourseWork-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
