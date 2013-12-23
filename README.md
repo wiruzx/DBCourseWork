@@ -40,4 +40,4 @@ _® - связи (relationship)_
 
 ##Загрузки
 
-[DBCourseWork.app.zip v1.0](https://bitbucket.org/wiruzx/db-coursework/downloads/DBCourseWork.app.zip)
+[DBCourseWork.app.zip v1.0](https://github.com/wiruzx/DBCourseWork/blob/master/DBCourseWork.app.zip)
