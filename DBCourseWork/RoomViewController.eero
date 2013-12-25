@@ -236,9 +236,9 @@ viewDidLoad
 
     super.viewDidLoad
 
-    heights := {'Type':@200.0, 'Stage':@60.0, 'Purpose':@200.0, 'Number':@60.0, 'Height':@60.0, 'Width':@60.0, 'Length':@60.0, 'Building':@150.0, 'Faculty':@150.0, 'Departament':@150.0, 'Laboratory':@220.0}
+    heights := {'Type':@200.0, 'Stage':@60.0, 'Purpose':@200.0, 'Number':@60.0, 'Height':@60.0, 'Width':@60.0, 'Length':@60.0, 'Building':@150.0, 'Faculty':@150.0, 'Departament':@150.0, 'Laboratory':@220.0, 'Square':@100.0, 'Volume':@100.0}
     
-    for String columnIdentifier in ['Type', 'Stage', 'Purpose', 'Number', 'Height', 'Width', 'Length', 'Building', 'Faculty', 'Departament', 'Laboratory']
+    for String columnIdentifier in ['Type', 'Stage', 'Purpose', 'Number', 'Height', 'Width', 'Length', 'Building', 'Faculty', 'Departament', 'Laboratory', 'Square', 'Volume']
         column := TableColumn.alloc.initWithIdentifier: columnIdentifier
         column.headerCell.setTitle: columnIdentifier
         column.setWidth: heights[columnIdentifier].integerValue
@@ -377,5 +377,25 @@ tableView: TableView tableView, viewForTableColumn: TableColumn, row: Integer, r
             textField.stringValue = ''
 
         return textField
- 
+    else if column.identifier == 'Square'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+        
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+        
+        textField.doubleValue = room.width.doubleValue * room.length.doubleValue
+        
+        return textField
+    else if column.identifier == 'Volume'
+        TextField textField = tableView.makeViewWithIdentifier: column.identifier, owner: self
+        
+        if not textField
+            textField = self.newLabel
+            textField.identifier = column.identifier
+        
+        textField.doubleValue = room.width.doubleValue * room.length.doubleValue * room.height.doubleValue
+        
+        return textField
+
 end
